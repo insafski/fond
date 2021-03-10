@@ -6,6 +6,7 @@ import {
     HttpLink,
 } from "@apollo/client";
 
+import ApiContextProvider from "../utils/apiContextProvider";
 import Layout from "../components/containers/Layout";
 
 import "../styles/index.css";
@@ -22,11 +23,13 @@ const client = new ApolloClient({
 
 const MyApp = ({ Component, pageProps, t }) => {
 	return (
-		<Layout>
-			<ApolloProvider client={client}>
-				<Component {...pageProps} />
-			</ApolloProvider>
-		</Layout>
+		<ApiContextProvider>
+			<Layout>
+				<ApolloProvider client={client}>
+					<Component {...pageProps} />
+				</ApolloProvider>
+			</Layout>
+		</ApiContextProvider>
 	);
 };
 
