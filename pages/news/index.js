@@ -1,15 +1,38 @@
-import Layout from "../components/layout";
-import TestTypography from "../components/testTypography";
+import Layout from "../../components/layout";
+import { gql } from "@apollo/client";
+import { client } from "../../utils/apollo";
 
-const App = () => {
+const query = gql`
+	query GetExchangeRates {
+		news(limit: 10) {
+			category_id
+			page_title_full
+			id
+		}
+	}
+`;
+
+export default function News({ data }) {
 	return (
 		<Layout>
-			<div className={"TEST PAGE"}>
-				<TestTypography children={"HELLO BITCHES"} />
-			</div>
 			<div className={"testStyle"}>News</div>
+			<ul>
+				{data.map((item) => (
+					<li>{item.page_title_full} -- {item.id}</li>
+				))}
+			</ul>
 		</Layout>
 	);
-};
+}
 
-export default App;
+export async function getStaticProps() {
+
+	const { data } = await client.query({
+		query: query,
+	});
+	return {
+		props: {
+			data: data.news,
+		},
+	};
+}

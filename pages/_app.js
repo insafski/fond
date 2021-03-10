@@ -1,7 +1,3 @@
-import App from "next/app";
-import ErrorPage from "next/error";
-import { useRouter } from "next/router";
-import { getGlobalData } from "utils/api";
 import {
     ApolloClient,
     ApolloProvider,
@@ -23,18 +19,6 @@ const client = new ApolloClient({
     }),
     cache: new InMemoryCache(),
 });
-
-// client
-//     .query({
-//         query: gql`
-//             query GetRates {
-//                 news {
-//                     category_id
-//                 }
-//             }
-//         `,
-//     })
-//     .then((result) => console.log("news", result));
 
 const MyApp = ({ Component, pageProps, t }) => {
     return (
