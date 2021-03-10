@@ -2,7 +2,7 @@ import { gql, useQuery } from "@apollo/client";
 import get from "lodash/get";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
-import Layout from "../../components/layout";
+import Layout from "../../components/containers/Layout";
 import { client } from "../../utils/apollo";
 
 const GET_DOGS = gql`

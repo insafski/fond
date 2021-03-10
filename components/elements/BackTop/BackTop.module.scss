@@ -1,0 +1,13 @@
+.backTop {
+	width: 3.5rem;
+    height: 3.5rem;
+    background-color: rgba(137, 43, 226, 0.199);
+    border-radius: 50%;
+    position: fixed;
+    right: 3rem;
+    bottom: 3rem;
+	outline: none;
+	&:focus {
+		outline: none;
+	}
+}

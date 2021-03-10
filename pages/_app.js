@@ -1,3 +1,4 @@
+import { appWithTranslation } from "next-i18next";
 import {
     ApolloClient,
     ApolloProvider,
@@ -6,7 +7,7 @@ import {
 } from "@apollo/client";
 
 import Layout from "../components/containers/Layout";
-import { appWithTranslation } from "next-i18next";
+
 import "../styles/index.css";
 
 const client = new ApolloClient({
