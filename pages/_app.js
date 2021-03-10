@@ -1,7 +1,3 @@
-import App from "next/app";
-import ErrorPage from "next/error";
-import { useRouter } from "next/router";
-import { getGlobalData } from "utils/api";
 import {
     ApolloClient,
     ApolloProvider,
@@ -9,9 +5,8 @@ import {
     HttpLink,
 } from "@apollo/client";
 
-import { i18n, withTranslation } from "../i18n";
-import { appWithTranslation } from "../i18n";
-
+import Layout from "../components/containers/Layout";
+import { appWithTranslation } from "next-i18next";
 import "../styles/index.css";
 
 const client = new ApolloClient({
@@ -24,24 +19,14 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
 });
 
-// client
-//     .query({
-//         query: gql`
-//             query GetRates {
-//                 news {
-//                     category_id
-//                 }
-//             }
-//         `,
-//     })
-//     .then((result) => console.log("news", result));
-
 const MyApp = ({ Component, pageProps, t }) => {
-    return (
-        <ApolloProvider client={client}>
-            <Component {...pageProps} />
-        </ApolloProvider>
-    );
+	return (
+		<Layout>
+			<ApolloProvider client={client}>
+				<Component {...pageProps} />
+			</ApolloProvider>
+		</Layout>
+	);
 };
 
-export default appWithTranslation(withTranslation("common")(MyApp));
+export default appWithTranslation(MyApp);

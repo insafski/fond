@@ -1,6 +1,6 @@
 {
   "h1": "A simple example",
-  "change-locale": "Sooooooqa",
+  "change-locale": "london is the capital of great britain",
   "to-second-page": "To second page",
   "error-with-status": "A {{statusCode}} error occurred on server",
   "error-without-status": "An error occurred on the server"
