@@ -6,6 +6,8 @@ import Layout from "../components/containers/Layout";
 import { client } from "../utils/apollo";
 
 import "../styles/index.css";
+import "rc-dropdown/assets/index.css";
+import "rc-dialog/assets/index.css";
 
 const MyApp = ({ Component, pageProps }) => {
 	return (
