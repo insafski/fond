@@ -5,6 +5,7 @@ import { useTranslation } from "next-i18next";
 import Navigation from "./Navigation"
 import Authorization from "../../Section/Authorization";
 import LanguageChanger from "../../../elements/LanguageChanger";
+import Search from "./Search";
 
 export default function Header() {
 
@@ -19,6 +20,7 @@ export default function Header() {
 			</Link>
 			<Authorization />
 			<LanguageChanger />
+			<Search/>
 		</header>
 	);
 }
