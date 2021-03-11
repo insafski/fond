@@ -2,7 +2,7 @@ import { gql, useQuery } from "@apollo/client";
 import get from "lodash/get";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
-import Layout from "../../components/containers/Layout";
+
 import { client } from "../../utils/apollo";
 
 const GET_DOGS = gql`
@@ -23,7 +23,7 @@ export default function News({ data }) {
 	if (error) return `Error! ${error.message}`;
 
 	return (
-		<Layout>
+		<>
 			{t("change-locale")}
 			{t("change-locale")}
 			<div className={"testStyle"}>{get(data.news[0], "page_title_full", "")}</div>
@@ -34,7 +34,7 @@ export default function News({ data }) {
 			</ul>
 			{t("change-locale")}
 			{t("change-locale")}
-		</Layout>
+		</>
 	);
 }
 

@@ -1,4 +1,3 @@
-import Layout from "../../components/containers/Layout";
 import { gql } from "@apollo/client";
 import { client } from "../../utils/apollo";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -19,7 +18,7 @@ export default function News({ data }) {
 	const { t } = useTranslation("common");
 
 	return (
-		<Layout>
+		<>
 			<div className={"testStyle"}>News</div>
 			{t("change-locale")}
 			{t("change-locale")}
@@ -32,7 +31,7 @@ export default function News({ data }) {
 					</li>
 				))}
 			</ul>
-		</Layout>
+		</>
 	);
 }
 

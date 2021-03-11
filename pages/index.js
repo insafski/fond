@@ -3,8 +3,6 @@ import { client } from "../utils/apollo";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
-import Layout from "../components/containers/Layout";
-
 const query = gql`
 	query GetExchangeRates {
 		news(limit: 100) {
@@ -19,7 +17,7 @@ export default function Home({ data }) {
 	const { t } = useTranslation("common");
 
 	return (
-		<Layout>
+		<>
 			<div className={"testStyle"}>News</div>
 			{t("change-locale")}
 			{t("change-locale")}
@@ -32,7 +30,7 @@ export default function Home({ data }) {
 					</li>
 				))}
 			</ul>
-		</Layout>
+		</>
 	);
 }
 
