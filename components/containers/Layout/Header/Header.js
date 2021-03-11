@@ -4,6 +4,7 @@ import { useTranslation } from "next-i18next";
 
 import Navigation from "./Navigation"
 import Authorization from "../../Section/Authorization";
+import LanguageChanger from "../../../elements/LanguageChanger";
 
 export default function Header() {
 
@@ -16,7 +17,8 @@ export default function Header() {
 			<Link href="/" locale={router.locale === "en" ? "de" : "en"}>
 				<button>{t("change-locale")}</button>
 			</Link>
-			<Authorization/>
+			<Authorization />
+			<LanguageChanger />
 		</header>
 	);
 }
