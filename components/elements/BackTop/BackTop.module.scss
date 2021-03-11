@@ -1,0 +1,19 @@
+.backtop {
+	width: 3.5rem;
+	height: 3.5rem;
+	background-color: rgba(137, 43, 226, 0.199);
+	border-radius: 50%;
+	position: fixed;
+	right: 3rem;
+	bottom: 3rem;
+	outline: none;
+	opacity: 1;
+	transition: opacity 0.3s ease-in 0s;
+
+	&:focus {
+		outline: none;
+	}
+	&.hide {
+		opacity: 0;
+	}
+}

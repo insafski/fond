@@ -1,12 +1,13 @@
-import Layout from "../components/layout";
 import { gql } from "@apollo/client";
 import { client } from "../utils/apollo";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
+import Layout from "../components/containers/Layout";
+
 const query = gql`
 	query GetExchangeRates {
-		news(limit: 10) {
+		news(limit: 100) {
 			category_id
 			page_title_full
 			id

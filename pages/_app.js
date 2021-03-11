@@ -1,31 +1,21 @@
-import {
-    ApolloClient,
-    ApolloProvider,
-    InMemoryCache,
-    HttpLink,
-} from "@apollo/client";
-
-import Layout from "../components/containers/Layout";
 import { appWithTranslation } from "next-i18next";
+import { ApolloProvider } from "@apollo/client";
+
+import ContextProvider from "../utils/contextProvider";
+import Layout from "../components/containers/Layout";
+import { client } from "../utils/apollo";
+
 import "../styles/index.css";
 
-const client = new ApolloClient({
-    link: new HttpLink({
-        uri: "https://gql-test.serafim.help/v1/graphql",
-        headers: {
-            "x-hasura-admin-secret": "password-for-hasura-test",
-        },
-    }),
-    cache: new InMemoryCache(),
-});
-
-const MyApp = ({ Component, pageProps, t }) => {
+const MyApp = ({ Component, pageProps }) => {
 	return (
-		<Layout>
-			<ApolloProvider client={client}>
-				<Component {...pageProps} />
-			</ApolloProvider>
-		</Layout>
+		<ContextProvider>
+			<Layout>
+				<ApolloProvider client={client}>
+					<Component {...pageProps} />
+				</ApolloProvider>
+			</Layout>
+		</ContextProvider>
 	);
 };
 

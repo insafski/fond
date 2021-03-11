@@ -1,4 +1,4 @@
-import Layout from "../../components/layout";
+import Layout from "../../components/containers/Layout";
 import { gql } from "@apollo/client";
 import { client } from "../../utils/apollo";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
