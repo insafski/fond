@@ -1,8 +1,9 @@
+import React from "react";
 import { useRouter } from "next/router";
-import Dropdown from "rc-dropdown";
 import Menu, { Divider } from "rc-menu";
 
 import LinkMaker from "../../../utils/linkMaker";
+import Dropdown from "@/components/containers/Dropdown";
 
 export default function LanguageChanger() {
 	const router = useRouter();
@@ -26,5 +27,5 @@ export default function LanguageChanger() {
 				<button style={{ width: 100 }}>{router.locale}</button>
 			</Dropdown>
 		</>
-	)
+	);
 }

@@ -1,10 +1,12 @@
+import Resact from "react";
+
 import Image from "next/image";
 import PropTypes from "prop-types";
 
-import logo from "../../../../media/test-logo.png";
-import LinkMaker from "../../../../../utils/linkMaker";
+import logo from "@/assets/img/test-logo.png";
+import LinkMaker from "@/utils/linkMaker";
 
-export default function Logo({title}) {
+export default function Logo({ title }) {
 	return (
 		<LinkMaker href={"news"}>
 			<div>
