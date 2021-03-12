@@ -1,7 +1,8 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import Dropdown from "rc-dropdown";
 import Menu, { Divider } from "rc-menu";
+
+import LinkMaker from "../../../utils/linkMaker";
 
 export default function LanguageChanger() {
 	const router = useRouter();
@@ -10,9 +11,9 @@ export default function LanguageChanger() {
 		<Menu selectable={true}>
 			{router.locales.map((item, index) => (
 				<>
-					<Link href={`${router.pathname}`} locale={item}>
+					<LinkMaker href={`${router.pathname}`} locale={item}>
 						<div key={item}>{item}</div>
-					</Link>
+					</LinkMaker>
 					{router.locales.length !== index + 1 && <Divider />}
 				</>
 			))}
