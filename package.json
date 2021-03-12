@@ -5,7 +5,9 @@
 		"dev": "next",
 		"develop": "next",
 		"build": "next build",
-		"start": "next start"
+		"start": "next start",
+		"lint": "eslint src/**/*.js",
+		"lint:fix": "eslint src/**/*.js  --fix"
 	},
 	"private": "true",
 	"dependencies": {
@@ -49,9 +51,15 @@
 	},
 	"devDependencies": {
 		"autoprefixer": "^10.2.4",
+		"babel-eslint": "^10.1.0",
+		"eslint": "^7.21.0",
+		"eslint-config-prettier": "^8.1.0",
+		"eslint-plugin-prettier": "^3.3.1",
+		"eslint-plugin-react": "^7.22.0",
 		"postcss": "^8.2.7",
 		"postcss-flexbugs-fixes": "4.2.1",
 		"postcss-preset-env": "^6.7.0",
+		"prettier": "^2.2.1",
 		"sass": "^1.32.8",
 		"tailwindcss": "^2.0.3"
 	}

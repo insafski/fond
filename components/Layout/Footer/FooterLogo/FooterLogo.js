@@ -1,7 +1,8 @@
+import React from "react";
 import Image from "next/image";
-import LinkMaker from "../../../../../utils/linkMaker";
+import LinkMaker from "@/utils/linkMaker";
 
-import Logo from "../../../../media/test-logo.png";
+import Logo from "@/assets/img/test-logo.png";
 
 export default function FooterLogo() {
 	return (

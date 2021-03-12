@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import Dropdown from "rc-dropdown";
+import React, { useState } from "react";
 import Menu from "rc-menu";
 
-export default function Search() {
+import Dropdown from "@/components/containers/Dropdown";
 
+export default function Search() {
 	const [state, setState] = useState("");
 
 	const menu = (
 		<Menu>
-			<input placeholder="search" onChange={(event) => setState(event.target.value)} />
+			<input placeholder="search" onChange={event => setState(event.target.value)} />
 			{state}
 		</Menu>
 	);

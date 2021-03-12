@@ -24,7 +24,7 @@ export default function Home({ data }) {
 			{t("change-locale")}
 			{t("change-locale")}
 			<ul>
-				{data.map((item) => (
+				{data.map(item => (
 					<li>
 						{item.page_title_full} -- {item.id}
 					</li>
@@ -36,11 +36,12 @@ export default function Home({ data }) {
 
 export async function getStaticProps({ locale }) {
 	const { data } = await client.query({
-		query: query,
+		query,
 	});
+
 	return {
 		props: {
-			...(await serverSideTranslations(locale, ["common"])),
+			...await serverSideTranslations(locale, ["common"]),
 			data: data.news,
 		},
 	};
