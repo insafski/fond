@@ -1,9 +1,10 @@
 import Image from "next/image";
+import PropTypes from "prop-types";
 
 import logo from "../../../../media/test-logo.png";
 import LinkMaker from "../../../../../utils/linkMaker";
 
-export default function Logo({img, title}) {
+export default function Logo({title}) {
 	return (
 		<LinkMaker href={"news"}>
 			<div>
@@ -13,3 +14,11 @@ export default function Logo({img, title}) {
 		</LinkMaker>
 	);
 }
+
+Logo.propTypes = {
+	title: PropTypes.string,
+};
+
+Logo.defaultProps = {
+	title: "",
+};
