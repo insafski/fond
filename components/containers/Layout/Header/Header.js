@@ -1,4 +1,8 @@
-import Navigation from "./Navigation"
+import React from "react";
+import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
+
+import Navigation from "./Navigation";
 import Authorization from "../../Section/Authorization";
 import LanguageChanger from "../../../elements/LanguageChanger";
 import Search from "../../../elements/Search";
