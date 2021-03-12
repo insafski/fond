@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-export const AuthContexts = createContext({
+export const AuthContext = createContext({
 	isOpen: false,
 	toggle: () => Function,
 	handelClose: () => Function,

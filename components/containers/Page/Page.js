@@ -31,7 +31,8 @@ export default function Page({ sections, metadata, heading, mainPage, title, sub
 		<>
 			<Seo metadata={metadata} />
 			{
-				!mainPage && (<Section heading={heading} />)}
+				!mainPage && (<Section heading={heading} />)
+			}
 			<Sections sections={sections} />
 		</>
 	);
