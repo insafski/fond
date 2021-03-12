@@ -10,7 +10,7 @@ export default function BrowserFooter() {
 	return (
 		<BrowserView>
 			<footer className={styles.footer}>
-				<div className={"container mx-auto flex flex-col md:flex-row"}>
+				<div className={"container flex flex-col md:flex-row"}>
 					<div className={"footer__item flex flex-wrap flex-row items-start md:w-6/12 justify-center"}>
 						<FooterLogo/>
 					</div>
@@ -25,8 +25,8 @@ export default function BrowserFooter() {
 						</div>
 					</nav>
 				</div>
-				<div className="text-sm bg-gray-200 py-6 text-gray-700">
-					<div className="container mx-auto">
+				<div className="text-sm bg-gray-200 py-4 text-gray-700">
+					<div className="container">
 						© 2012-2021 Fatikh center «Dimych Казань™». Политика конфиденциальности
 					</div>
 				</div>

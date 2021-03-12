@@ -11,10 +11,10 @@ export default function Layout({ children }) {
 		<main className={"layout"}>
 			<AuthProvider>
 				<Header />
-				<Backtop />
 				{children}
 				<Footer />
 			</AuthProvider>
+			<Backtop />
 		</main>
 	);
 }
