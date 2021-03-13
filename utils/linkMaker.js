@@ -14,7 +14,7 @@ export default function LinkMaker({children, href, locale}) {
 }
 
 LinkMaker.propTypes = {
-	children: PropTypes.children,
+	children: PropTypes.Function,
 	href: PropTypes.string,
 	locale: PropTypes.string
 }
