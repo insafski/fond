@@ -10,6 +10,7 @@ export default function ContextProvider({ children }) {
 	}
 
 	function reducer(state, action) {
+		console.log(action)
 		switch (action.type) {
 			case "login":
 				return { ...state, loginForm: !state.loginForm };
