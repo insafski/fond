@@ -1,14 +1,18 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 
 export const AuthContext = createContext({
-	isOpen: false,
-	toggle: () => Function,
-	handelClose: () => Function,
-	handleOpen: () => Function,
+	authFormState: {
+		loginForm: false,
+		registerForm: false
+	},
+	toggleLoginForm: () => Function,
+	toggleRegisterForm: () => Function
 });
 
 AuthContext.displayName = "AuthContext";
 
 export const AuthContextProvider = AuthContext.Provider;
-export const AuthConsumer = AuthContext.Consumer;
+export const useAuthContext = () => {
+	return useContext(AuthContext);
+}
 export default AuthContext;

@@ -1,59 +1,90 @@
-import React, { useState } from "react";
+import React, { createElement, useReducer } from "react";
 import PropTypes from "prop-types";
-import { useToggle } from "ahooks";
 
-import Modal from "@/components/containers/Modal";
 import { AuthContextProvider } from "../context";
+import Form from "../Form";
 
 export default function AuthProvider({ children }) {
-	const [isOpen, { toggle }] = useToggle();
-	const [auth, { toggle: toggleAuth }] = useToggle();
-	const [mousePosition, setMousePosition] = useState({
-		x: null,
-		y: null,
-	});
+	const initialState = {
+		type: null,
+		isVisible: false,
+		mousePosition: {
+			x: null,
+			y: null,
+		}
+	};
+
+	function reducer(state, { type, payload }) {
+		switch (type) {
+			case "open":
+				return {
+					...state,
+					type: payload.type,
+					mousePosition: payload.mousePosition,
+					isVisible: true,
+				};
+			case "close":
+				return {
+					...state,
+					isVisible: false
+				};
+			default:
+				return initialState;
+		}
+	}
+
+	const [authFormState, dispatch] = useReducer(reducer, initialState);
 
 	function handleClose() {
 		toggle(false);
 	}
 
-	function handleOpen(event) {
-		setMousePosition({
-			x: event.pageX,
-			y: event.pageY,
+	function handleOpenRegister(event) {
+		dispatch({
+			type: "open",
+			payload: {
+				type: "register",
+				mousePosition: {
+					x: event.pageX,
+					y: event.pageY,
+				}
+			},
 		});
-		toggle(true);
 	}
+
+	function handleOpenLogin(event) {
+		dispatch({
+			type: "open",
+			payload: {
+				type: "login",
+				mousePosition: {
+					x: event.pageX,
+					y: event.pageY,
+				}
+			},
+		});
+	}
+
+	function handleClose() {
+		dispatch({type: "close"});
+	};
+
+	function onClose() {
+		dispatch({});
+	}
+
+	const { type, mousePosition, isVisible } = authFormState;
 
 	return (
 		<AuthContextProvider
 			value={{
-				isOpen,
-				toggle,
-				handleClose,
-				handleOpen,
+				authFormState,
+				handleOpenRegister,
+				handleOpenLogin,
+				handleClose
 			}}
 		>
-			<Modal
-				title={"Авторизация"}
-				visible={auth}
-				onClose={handleClose}
-				mousePosition={mousePosition}
-				wrapClassName={"center"}
-				style={{
-					width: 600,
-				}}
-			></Modal>
-			<Modal
-				title={"Регистрация"}
-				visible={isOpen}
-				onClose={handleClose}
-				mousePosition={mousePosition}
-				wrapClassName={"center"}
-				style={{
-					width: 600,
-				}}
-			></Modal>
+			{type && createElement(Form.get(type), { mousePosition, isVisible, handleClose, onClose }, null)}
 			{children}
 		</AuthContextProvider>
 	);
