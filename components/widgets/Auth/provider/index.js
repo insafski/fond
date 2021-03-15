@@ -73,6 +73,89 @@ export default function AuthProvider({ children }) {
 		dispatch({});
 	}
 
+
+	function configs(configType, form){
+		if (configType === "register") {
+			return  [
+						{
+							id: "email",
+							label: "Введите свой имеил",
+							rules: [{ required: true }, { type: "email" }],
+							error: form.getFieldError('email'),
+						}, {
+							id: "password",
+							label: "Введите пароль",
+							rules: [
+									{ required: true },
+									context => ({
+									validator(_, __, callback) {
+										if (context.isFieldTouched('password2')) {
+										context.validateFields(['password2']);
+										callback();
+										return;
+										}
+										callback();
+									},
+									}),
+							],
+							error: form.getFieldError('password'),
+						}, {
+							id: "password2",
+							label: "Введите пароль повторно",
+							rules: [
+
+								{ required: true },
+									context => ({
+									validator(rule, value, callback) {
+										const { password } = context.getFieldsValue(true);
+										if (password !== value) {
+											callback('Not Same as password1!!!');
+										}
+											callback();
+									},
+								}),
+							],
+							error: form.getFieldError('password2'),
+						}
+					]
+		} else {
+			return [
+				{
+					id: "email",
+					label: "Введите свой имеил",
+					rules: [{ required: true }, { type: "email" }],
+					error: form.getFieldError('email'),
+				},
+				{
+					id: "password",
+					label: "Введите пароль",
+					rules: [
+							{ required: true },
+							context => ({
+							validator(_, __, callback) {
+								if (context.isFieldTouched('password2')) {
+								context.validateFields(['password2']);
+								callback();
+								return;
+								}
+								callback();
+							},
+							}),
+					],
+					error: form.getFieldError('password'),
+				}
+			]
+		}
+	}
+
+	// function textConfigs (configType){
+	// 	if (configType === "register") {
+	// 		return {
+
+	// 		}
+	// 	}
+	// }
+
 	const { type, mousePosition, isVisible } = authFormState;
 
 	return (
@@ -84,7 +167,7 @@ export default function AuthProvider({ children }) {
 				handleClose
 			}}
 		>
-			{type && createElement(Form.get(type), { mousePosition, isVisible, handleClose, onClose }, null)}
+			{type && createElement(Form.get(type), { mousePosition, isVisible, handleClose, onClose, configs, type }, null)}
 			{children}
 		</AuthContextProvider>
 	);

@@ -5,15 +5,16 @@ import { useAuthContext } from "@/components/widgets/Auth/context";
 import { Button } from "@/components/elements/Form";
 import { Input } from "@/components/elements/Form";
 import Modal from "@/components/containers/Modal";
+import { configs } from "eslint-plugin-prettier";
 
-export default function Register({ isVisible, handleClose, mousePosition }) {
+export default function Register({ isVisible, handleClose, mousePosition, configs, type }) {
 	const onFinish = values => {
     	console.log('Finish:', values);
 	};
 
 	return (
 		<Modal
-			title={"Регистрация"}
+			title={ type === "register" ? "Регистрация" : "Авторизация"}
 			visible={isVisible}
 			onClose={handleClose}
 			wrapClassName={"center"}
@@ -30,61 +31,15 @@ export default function Register({ isVisible, handleClose, mousePosition }) {
 		>
 			<Form style={{ padding: 16 }} onFinish={onFinish}>
 				{(values, form) => {
-					const emailError = form.getFieldError('email');
-					const passwordError = form.getFieldError('password');
-					const password2Error = form.getFieldError('password2');
 					const errors = form.getFieldsError();
 					if (errors) {
 						console.log('Render with Errors:', values, form.getFieldsError());
 					}
 
-					const configs = [
-						{
-							id: "email",
-							label: "Введите свой имеил",
-							rules: [{ required: true }, { type: "email" }],
-							error: emailError,
-						}, {
-							id: "password",
-							label: "Введите пароль",
-							rules: [
-									{ required: true },
-									context => ({
-									validator(_, __, callback) {
-										if (context.isFieldTouched('password2')) {
-										context.validateFields(['password2']);
-										callback();
-										return;
-										}
-										callback();
-									},
-									}),
-							],
-							error: passwordError,
-						}, {
-							id: "password2",
-							label: "Введите пароль повторно",
-							rules: [
-
-								{ required: true },
-									context => ({
-									validator(rule, value, callback) {
-										const { password } = context.getFieldsValue(true);
-										if (password !== value) {
-											callback('Not Same as password1!!!');
-										}
-											callback();
-									},
-								}),
-							],
-							error: password2Error,
-						}
-					]
-
 					return (
 						<>
 							{
-								configs.map(({ id, label, rules, error }) => {
+								configs(type, form).map(({ id, label, rules, error }) => {
 									return (
 										<Input
 											id={id}

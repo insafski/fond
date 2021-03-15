@@ -1,14 +1,13 @@
 import React from "react";
 import Form from 'rc-field-form';
 
-import { useAuthContext } from "@/components/widgets/Auth/context";
 import { Button } from "@/components/elements/Form";
 import { Input } from "@/components/elements/Form";
 import Modal from "@/components/containers/Modal";
 
-export default function Login({ isVisible, handleClose, mousePosition }) {
+export default function Login({ isVisible, handleClose, mousePosition, configs }) {
 	const onFinish = values => {
-    	console.log('Finish:', values);
+    	console.log(values);
 	};
 
 	return (
@@ -30,44 +29,15 @@ export default function Login({ isVisible, handleClose, mousePosition }) {
 		>
 			<Form style={{ padding: 16 }} onFinish={onFinish}>
 				{(values, form) => {
-					const emailError = form.getFieldError('email');
-					const passwordError = form.getFieldError('password');
 					const errors = form.getFieldsError();
 					if (errors) {
 						console.log('Render with Errors:', values, form.getFieldsError());
 					}
 
-					const configs = [
-						{
-							id: "email",
-							label: "Введите свой имеил",
-							rules: [{ required: true }, { type: "email" }],
-							error: emailError,
-						},
-						{
-							id: "password",
-							label: "Введите пароль",
-							rules: [
-									{ required: true },
-									context => ({
-									validator(_, __, callback) {
-										if (context.isFieldTouched('password2')) {
-										context.validateFields(['password2']);
-										callback();
-										return;
-										}
-										callback();
-									},
-									}),
-							],
-							error: passwordError,
-						}
-					]
-
 					return (
 						<>
 							{
-								configs.map(({id, label, rules, error}) => {
+								configs(form).map(({id, label, rules, error}) => {
 									return (
 										<Input
 											id={id}

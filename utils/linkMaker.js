@@ -15,13 +15,13 @@ export default function LinkMaker({ children, href, locale }) {
 }
 
 LinkMaker.propTypes = {
-	children: PropTypes.func,
+	children: PropTypes.node,
 	href: PropTypes.string,
 	locale: PropTypes.string,
 };
 
 LinkMaker.defaultProps = {
-	children: () => Function,
+	children: null,
 	href: "/",
 	locale: "",
 };

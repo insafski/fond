@@ -6,6 +6,6 @@ export default {
 	register: Register,
 	imperial: null,
 	get(type) {
-		return this[type] || this.imperial;
+		return this.register || this.imperial;
 	},
 };
