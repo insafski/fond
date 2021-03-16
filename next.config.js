@@ -8,5 +8,9 @@ module.exports = {
 		webpack(config, options) {
 			return config;
 		},
-	})
+	}),
+	env: {
+		HASURA_ENDPOINT: "https://gql.fscch.ru/v1/graphql",
+		HASURA_ADMIN_SECRET: "pass-hasura-fssch",
+	},
 };

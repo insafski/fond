@@ -7,9 +7,10 @@ import { Button } from "@/components/elements/Form";
 import { Input } from "@/components/elements/Form";
 import Modal from "@/components/containers/Modal";
 
-export default function FormMaker({ isVisible, handleClose, mousePosition, configs, type, textConfigs }) {
+export default function FormMaker({ isVisible, handleClose, mousePosition, configs, type, textConfigs, handleSubmit }) {
 	const onFinish = values => {
-    	console.log("Finish:", values);
+		console.log("Finish:", values);
+		handleSubmit(values);
 	};
 
 	return (
@@ -66,6 +67,7 @@ FormMaker.propTypes = {
 	configs: PropTypes.func,
 	type: PropTypes.string,
 	textConfigs: PropTypes.func,
+	handleSubmit: PropTypes.func
 };
 
 FormMaker.defaultProps = {
@@ -78,4 +80,5 @@ FormMaker.defaultProps = {
 	configs: () => Function,
 	type: "",
 	textConfigs: () => Function,
+	handleSubmit: () => Function
 };

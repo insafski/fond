@@ -69,15 +69,21 @@ export default function AuthProvider({ children }) {
 		dispatch({});
 	}
 
+	function handleSubmit(options) {
+		console.log(options);
+	}
+
 	function configs(configType, form) {
-		if (configType === "register") {
-			return [
+		switch (configType) {
+			case "register":
+				return [
 				{
 					id: "email",
 					label: "Введите свой имеил",
 					rules: [{ required: true }, { type: "email" }],
 					error: form.getFieldError("email"),
-				}, {
+				},
+				{
 					id: "password",
 					label: "Введите пароль",
 					rules: [
@@ -95,7 +101,8 @@ export default function AuthProvider({ children }) {
 						}),
 					],
 					error: form.getFieldError("password"),
-				}, {
+				},
+				{
 					id: "password2",
 					label: "Введите пароль повторно",
 					rules: [
@@ -114,9 +121,8 @@ export default function AuthProvider({ children }) {
 					error: form.getFieldError("password2"),
 				},
 			];
-		}
-
-		return [
+			case "login":
+				return [
 			{
 				id: "email",
 				label: "Введите свой имеил",
@@ -143,6 +149,9 @@ export default function AuthProvider({ children }) {
 				error: form.getFieldError("password"),
 			},
 		];
+			default:
+				return
+		}
 	}
 
 	function textConfigs(configType) {
@@ -168,6 +177,7 @@ export default function AuthProvider({ children }) {
 				handleOpenRegister,
 				handleOpenLogin,
 				handleClose,
+				handleSubmit
 			}}
 		>
 			{type && createElement(FormMaker, { mousePosition,
@@ -176,7 +186,8 @@ export default function AuthProvider({ children }) {
 				onClose,
 				configs,
 				type,
-				textConfigs }, null)}
+				textConfigs,
+				handleSubmit}, null)}
 			{children}
 		</AuthContextProvider>
 	);
