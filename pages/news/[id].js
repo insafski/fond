@@ -3,22 +3,17 @@ import { gql, useQuery } from "@apollo/client";
 import get from "lodash/get";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import { withRouter } from "next/router";
 
+import {GET_EXCHANGE_RATES_NEWS} from "@/components/queries/queries.graphql";
 import { client } from "../../utils/apollo";
 
-const GET_DOGS = gql`
-	query GetExchangeRates {
-		pages {
-			title
-			id
-		}
-	}
-`;
 export default function News({ data }) {
+
 
 	const { t } = useTranslation("common");
 
-	const { loading, error, data: fetchedData } = useQuery(GET_DOGS);
+	const { loading, error, data: fetchedData } = useQuery(GET_EXCHANGE_RATES_NEWS);
 
 	if (loading) return "Loading...";
 	if (error) return `Error! ${error.message}`;
@@ -27,10 +22,14 @@ export default function News({ data }) {
 		<>
 			{t("change-locale")}
 			{t("change-locale")}
-			<div className={"testStyle"}>{get(data.news[0], "page_title_full", "")}</div>
+			<div
+				className={"testStyle"}
+				style={{ fontSize: "10rem" }}>
+				{get(data, "cities[0].page_title_short", "")}
+			</div>
 			<ul>
-				{fetchedData.pages.map((item) => (
-					<li>{item.title}</li>
+				{fetchedData.cities.map((item) => (
+					<li>{item.page_title_short}</li>
 				))}
 			</ul>
 			{t("change-locale")}
@@ -39,20 +38,11 @@ export default function News({ data }) {
 	);
 }
 
-const pathQuery = gql`
-	query GetExchangeRates {
-		pages {
-			title
-			id
-		}
-	}
-`;
-
 const contentQuery = (params) => gql`
 	query GetExchangeRates {
-		pages(where: { id: { _eq: ${params.id} } }) {
-			title
+		cities(where: { id: { _eq: ${params.id} } }) {
 			id
+			page_title_short
 		}
 	}
 `;
@@ -70,11 +60,22 @@ export async function getStaticProps({ params, locale }) {
 }
 
 export async function getStaticPaths() {
+
 	const { data } = await client.query({
-		query: pathQuery,
+		query: GET_EXCHANGE_RATES_NEWS,
 	});
-
-	const paths = data.pages.map((news) => `/news/${news.id}`);
-
+	const paths = data.cities.map((slug) => {
+		//TODO: withrouter options fix
+		withRouter().locales.map((local) => {
+			return {
+				params: {
+					slug: `${slug.id}`
+				},
+				locale: {
+					local
+				}
+			}
+		})
+	});
 	return { paths, fallback: false };
 }

@@ -1,0 +1,15 @@
+query GET_EXCHANGE_RATES {
+	news(limit: 100) {
+		category_id
+		page_title_full
+		id
+	}
+}
+
+query GET_EXCHANGE_RATES_NEWS {
+	cities {
+		id
+		page_title_short
+	}
+}
+
