@@ -22,7 +22,11 @@ export default function News({ data }) {
 		<>
 			{t("change-locale")}
 			{t("change-locale")}
-			<div className={"testStyle"} style={{fontSize: "10rem"}}>{get(data.cities[0], "page_title_short", "")}</div>
+			<div
+				className={"testStyle"}
+				style={{ fontSize: "10rem" }}>
+				{get(data, "cities[0].page_title_short", "")}
+			</div>
 			<ul>
 				{fetchedData.cities.map((item) => (
 					<li>{item.page_title_short}</li>
@@ -57,11 +61,11 @@ export async function getStaticProps({ params, locale }) {
 
 export async function getStaticPaths() {
 
-	console.log(withRouter())
 	const { data } = await client.query({
 		query: GET_EXCHANGE_RATES_NEWS,
 	});
 	const paths = data.cities.map((slug) => {
+		//TODO: withrouter options fix
 		withRouter().locales.map((local) => {
 			return {
 				params: {

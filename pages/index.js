@@ -5,7 +5,7 @@ import { client } from "../utils/apollo";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
-import {GET_EXCHANGE_RATES} from "@/components/queries/queries.graphql";
+import { GET_EXCHANGE_RATES } from "@/components/queries/queries.graphql";
 
 export default function Home({ data }) {
 	const { t } = useTranslation("common");
