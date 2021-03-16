@@ -73,84 +73,84 @@ export default function AuthProvider({ children }) {
 		console.log(options);
 	}
 
-	function configs(configType, form) {
+	function makeConfig(configType, form) {
 		switch (configType) {
 			case "register":
 				return [
-				{
-					id: "email",
-					label: "Введите свой имеил",
-					rules: [{ required: true }, { type: "email" }],
-					error: form.getFieldError("email"),
-				},
-				{
-					id: "password",
-					label: "Введите пароль",
-					rules: [
-						{ required: true },
-						context => ({
-							validator(_, __, callback) {
-								if (context.isFieldTouched("password2")) {
-									context.validateFields(["password2"]);
+					{
+						id: "email",
+						label: "Введите свой имеил",
+						rules: [{ required: true }, { type: "email" }],
+						error: form.getFieldError("email"),
+					},
+					{
+						id: "password",
+						label: "Введите пароль",
+						rules: [
+							{ required: true },
+							context => ({
+								validator(_, __, callback) {
+									if (context.isFieldTouched("password2")) {
+										context.validateFields(["password2"]);
+										callback();
+
+										return;
+									}
 									callback();
+								},
+							}),
+						],
+						error: form.getFieldError("password"),
+					},
+					{
+						id: "password2",
+						label: "Введите пароль повторно",
+						rules: [
 
-									return;
-								}
-								callback();
-							},
-						}),
-					],
-					error: form.getFieldError("password"),
-				},
-				{
-					id: "password2",
-					label: "Введите пароль повторно",
-					rules: [
-
-						{ required: true },
-						context => ({
-							validator(rule, value, callback) {
-								const { password } = context.getFieldsValue(true);
-								if (password !== value) {
-									callback("Not Same as password1!!!");
-								}
-								callback();
-							},
-						}),
-					],
-					error: form.getFieldError("password2"),
-				},
-			];
+							{ required: true },
+							context => ({
+								validator(rule, value, callback) {
+									const { password } = context.getFieldsValue(true);
+									if (password !== value) {
+										callback("Not Same as password1!!!");
+									}
+									callback();
+								},
+							}),
+						],
+						error: form.getFieldError("password2"),
+					},
+				];
 			case "login":
 				return [
-			{
-				id: "email",
-				label: "Введите свой имеил",
-				rules: [{ required: true }, { type: "email" }],
-				error: form.getFieldError("email"),
-			},
-			{
-				id: "password",
-				label: "Введите пароль",
-				rules: [
-					{ required: true },
-					context => ({
-						validator(_, __, callback) {
-							if (context.isFieldTouched("password2")) {
-								context.validateFields(["password2"]);
-								callback();
+					{
+						id: "email",
+						label: "Введите свой имеил",
+						rules: [{ required: true }, { type: "email" }],
+						error: form.getFieldError("email"),
+					},
+					{
+						id: "password",
+						label: "Введите пароль",
+						rules: [
+							{ required: true },
+							context => ({
+								validator(_, __, callback) {
+									if (context.isFieldTouched("password2")) {
+										context.validateFields(["password2"]);
+										callback();
 
-								return;
-							}
-							callback();
-						},
-					}),
-				],
-				error: form.getFieldError("password"),
-			},
-		];
+										return;
+									}
+									callback();
+								},
+							}),
+						],
+						error: form.getFieldError("password"),
+					},
+				];
 			default:
-				return
+				return [];
 		}
 	}
 
@@ -177,17 +177,25 @@ export default function AuthProvider({ children }) {
 				handleOpenRegister,
 				handleOpenLogin,
 				handleClose,
-				handleSubmit
+				handleSubmit,
 			}}
 		>
-			{type && createElement(FormMaker, { mousePosition,
-				isVisible,
-				handleClose,
-				onClose,
-				configs,
-				type,
-				textConfigs,
-				handleSubmit}, null)}
+			{
+				type && createElement(
+					FormMaker,
+					{
+						mousePosition,
+						isVisible,
+						handleClose,
+						onClose,
+						makeConfig,
+						type,
+						textConfigs,
+						handleSubmit,
+					},
+					null,
+				)
+			}
 			{children}
 		</AuthContextProvider>
 	);
