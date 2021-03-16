@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 
 import Logo from "@/components/elements/Logo";
+
 export default function Navigation({ items }) {
 	return (
 		<div className={"navigation flex justify-between"}>
