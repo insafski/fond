@@ -38,3 +38,14 @@ GalleryItem.propTypes = {
 	title: PropTypes.string,
 	id: PropTypes.string,
 };
+
+GalleryItem.defaultProps = {
+	original: "",
+	thumbnail: "",
+	width: 0,
+	height: 0,
+	title: "",
+	id: "",
+};
+
+GalleryItem.displayName = "GalleryItem";
