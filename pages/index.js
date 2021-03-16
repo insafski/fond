@@ -5,15 +5,7 @@ import { client } from "../utils/apollo";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
-const query = gql`
-	query GetExchangeRates {
-		news(limit: 100) {
-			category_id
-			page_title_full
-			id
-		}
-	}
-`;
+import {GET_EXCHANGE_RATES} from "@/components/queries/queries.graphql";
 
 export default function Home({ data }) {
 	const { t } = useTranslation("common");
@@ -48,7 +40,7 @@ Home.defaultProps = {
 
 export async function getStaticProps({ locale }) {
 	const { data } = await client.query({
-		query,
+		query: GET_EXCHANGE_RATES,
 	});
 
 	return {

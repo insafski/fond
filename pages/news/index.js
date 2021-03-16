@@ -1,17 +1,9 @@
 import React from "react";
-import { gql } from "@apollo/client";
 import { client } from "../../utils/apollo";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
-const query = gql`
-	query GetExchangeRates {
-		pages {
-			title
-			id
-		}
-	}
-`;
+import { GET_EXCHANGE_RATES_NEWS } from "@/components/queries/queries.graphql";
 
 export default function News({ data }) {
 
@@ -27,7 +19,7 @@ export default function News({ data }) {
 			<ul>
 				{data.map((item) => (
 					<li>
-						{item.title} -- {item.id}
+						{item.page_title_short} -- {item.id}
 					</li>
 				))}
 			</ul>
@@ -36,14 +28,14 @@ export default function News({ data }) {
 }
 
 export async function getStaticProps({locale}) {
-
 	const { data } = await client.query({
-		query: query,
+		query: GET_EXCHANGE_RATES_NEWS,
 	});
+
 	return {
 		props: {
 			...(await serverSideTranslations(locale, ["common"])),
-			data: data.pages,
+			data: data.cities,
 		},
 	};
 }
