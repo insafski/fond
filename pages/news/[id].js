@@ -1,3 +1,4 @@
+import React from "react";
 import { gql, useQuery } from "@apollo/client";
 import get from "lodash/get";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -7,9 +8,9 @@ import { client } from "../../utils/apollo";
 
 const GET_DOGS = gql`
 	query GetExchangeRates {
-		news(limit: 10) {
-			published_at
-			type
+		pages {
+			title
+			id
 		}
 	}
 `;
@@ -28,8 +29,8 @@ export default function News({ data }) {
 			{t("change-locale")}
 			<div className={"testStyle"}>{get(data.news[0], "page_title_full", "")}</div>
 			<ul>
-				{fetchedData.news.map((item) => (
-					<li>{item.type}</li>
+				{fetchedData.pages.map((item) => (
+					<li>{item.title}</li>
 				))}
 			</ul>
 			{t("change-locale")}
@@ -40,9 +41,8 @@ export default function News({ data }) {
 
 const pathQuery = gql`
 	query GetExchangeRates {
-		news(limit: 10) {
-			category_id
-			page_title_full
+		pages {
+			title
 			id
 		}
 	}
@@ -50,9 +50,8 @@ const pathQuery = gql`
 
 const contentQuery = (params) => gql`
 	query GetExchangeRates {
-		news(where: { id: { _eq: ${params.id} } }) {
-			category_id
-			page_title_full
+		pages(where: { id: { _eq: ${params.id} } }) {
+			title
 			id
 		}
 	}
@@ -75,7 +74,7 @@ export async function getStaticPaths() {
 		query: pathQuery,
 	});
 
-	const paths = data.news.map((news) => `/news/${news.id}`);
+	const paths = data.pages.map((news) => `/news/${news.id}`);
 
 	return { paths, fallback: false };
 }

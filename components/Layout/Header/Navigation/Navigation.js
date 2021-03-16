@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 
 import Logo from "@/components/elements/Logo";
-import Authorization from "@/components/containers/Section/Authorization";
+import {Auth} from "@/components/widgets/Auth";
 import LanguageChanger from "@/components/elements/LanguageChanger";
 
 export default function Navigation({ items }) {
@@ -34,7 +34,7 @@ export default function Navigation({ items }) {
 				</ul>
 			</nav>
 			<div className={"navigation__globals"}>
-				<Authorization />
+				<Auth />
 				<LanguageChanger />
 			</div>
 		</div>

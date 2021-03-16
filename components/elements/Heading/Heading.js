@@ -4,7 +4,6 @@ import cx from "classnames";
 
 import styles from "./Heading.module.scss";
 
-console.log({ styles });
 export default function Heading({ type, className, heading, underline }) {
 	const { title, subText, subTitle } = heading;
 	const classNames = {

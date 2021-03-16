@@ -1,3 +1,4 @@
+import React from "react";
 import { gql } from "@apollo/client";
 import { client } from "../../utils/apollo";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -5,9 +6,8 @@ import { useTranslation } from "next-i18next";
 
 const query = gql`
 	query GetExchangeRates {
-		news(limit: 10) {
-			category_id
-			page_title_full
+		pages {
+			title
 			id
 		}
 	}
@@ -27,7 +27,7 @@ export default function News({ data }) {
 			<ul>
 				{data.map((item) => (
 					<li>
-						{item.page_title_full} -- {item.id}
+						{item.title} -- {item.id}
 					</li>
 				))}
 			</ul>
@@ -43,7 +43,7 @@ export async function getStaticProps({locale}) {
 	return {
 		props: {
 			...(await serverSideTranslations(locale, ["common"])),
-			data: data.news,
+			data: data.pages,
 		},
 	};
 }
