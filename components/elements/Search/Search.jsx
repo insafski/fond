@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Menu from "rc-menu";
+import Menu from "@/components/containers/Menu";
 
 import Dropdown from "@/components/containers/Dropdown";
 
@@ -7,9 +7,9 @@ export default function Search() {
 	const [state, setState] = useState("");
 
 	const menu = (
-		<Menu>
+		<Menu className={"rounded-none shadow-none bg-white border border-solid border-gray-300 outline-none flex flex-col"}>
 			<input placeholder="search" onChange={event => setState(event.target.value)} />
-			{state}
+			<span>{state}</span>
 		</Menu>
 	);
 
