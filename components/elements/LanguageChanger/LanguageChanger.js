@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useRouter } from "next/router";
 import Menu, { Divider } from "rc-menu";
 
@@ -10,14 +10,16 @@ export default function LanguageChanger() {
 
 	const menu = (
 		<Menu selectable={true}>
-			{router.locales.map((item, index) => (
-				<>
-					<LinkMaker href={`${router.pathname}`} locale={item}>
-						<div key={item}>{item}</div>
-					</LinkMaker>
-					{router.locales.length !== index + 1 && <Divider />}
-				</>
-			))}
+			{
+				router.locales.map((item, idx) => (
+					<Fragment key={idx}>
+						<LinkMaker href={`${router.pathname}`} locale={item}>
+							<div key={item}>{item}</div>
+						</LinkMaker>
+						{router.locales.length !== idx + 1 && <Divider />}
+					</Fragment>
+				))
+			}
 		</Menu>
 	);
 

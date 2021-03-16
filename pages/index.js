@@ -1,3 +1,5 @@
+import React from "react";
+import PropTypes from "prop-types";
 import { gql } from "@apollo/client";
 import { client } from "../utils/apollo";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -24,15 +26,25 @@ export default function Home({ data }) {
 			{t("change-locale")}
 			{t("change-locale")}
 			<ul>
-				{data.map(item => (
-					<li>
-						{item.page_title_full} -- {item.id}
-					</li>
-				))}
+				{
+					data.map((item, idx) => (
+						<li key={idx}>
+							{item.page_title_full} -- {item.id}
+						</li>
+					))
+				}
 			</ul>
 		</>
 	);
 }
+
+Home.propTypes = {
+	data: PropTypes.array,
+};
+
+Home.defaultProps = {
+	data: [],
+};
 
 export async function getStaticProps({ locale }) {
 	const { data } = await client.query({

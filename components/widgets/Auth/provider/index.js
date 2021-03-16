@@ -2,7 +2,7 @@ import React, { createElement, useReducer } from "react";
 import PropTypes from "prop-types";
 
 import { AuthContextProvider } from "../context";
-import FormMaker from "../FormMaker";
+import Form from "../Form";
 
 export default function AuthProvider({ children }) {
 	const initialState = {
@@ -181,7 +181,7 @@ export default function AuthProvider({ children }) {
 		>
 			{
 				type && createElement(
-					FormMaker,
+					Form,
 					{
 						mousePosition,
 						isVisible,
