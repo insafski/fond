@@ -69,15 +69,11 @@ export default function AuthProvider({ children }) {
 		dispatch({});
 	}
 
-	function handleSubmit(options) {
-		console.log(options);
-	}
-
 	function makeConfig(type) {
 		switch (type) {
 			case "register":
 				return {
-					label: "Регистрация",
+					title: "Регистрация",
 					buttonLabel: "Регистрация",
 					inputs: [
 						{
@@ -133,7 +129,7 @@ export default function AuthProvider({ children }) {
 				};
 			case "login":
 				return {
-					label: "Авторизация",
+					title: "Авторизация",
 					buttonLabel: "Войти",
 					inputs: [
 						{
@@ -181,7 +177,6 @@ export default function AuthProvider({ children }) {
 				handleOpenRegister,
 				handleOpenLogin,
 				handleClose,
-				handleSubmit,
 			}}
 		>
 			{
@@ -194,7 +189,6 @@ export default function AuthProvider({ children }) {
 						onClose,
 						makeConfig,
 						type,
-						handleSubmit,
 					},
 					null,
 				)

@@ -2,17 +2,25 @@
 import React from "react";
 import Form from "rc-field-form";
 import PropTypes from "prop-types";
+import get from "lodash/get";
 
 import { Button } from "@/components/elements/Form";
 import { Input } from "@/components/elements/Form";
 import Modal from "@/components/containers/Modal";
 
-export default function FormMaker({ isVisible, handleClose, mousePosition, makeConfig, type, handleSubmit }) {
+export default function FormMaker({ isVisible, handleClose, mousePosition, makeConfig, type }) {
 	const config = makeConfig(type);
+
+	const inputs = get(config, "inputs", []);
+	const title = get(config, "title", "");
+
+	function handleSubmit(values) {
+		console.info({ values });
+	}
 
 	return (
 		<Modal
-			title={config.label}
+			title={title}
 			visible={isVisible}
 			onClose={handleClose}
 			wrapClassName={"center"}
@@ -44,23 +52,17 @@ export default function FormMaker({ isVisible, handleClose, mousePosition, makeC
 							console.log("Render with Errors:", values, form.getFieldsError());
 						}
 
-						return (
-							<>
-								{
-									makeConfig(type, form).map(({ id, label, rules, error }, idx) => {
-										return (
-											<Input
-												key={`${idx}-${id}`}
-												id={id}
-												label={label}
-												rules={rules}
-												error={error(form)}
-											/>
-										);
-									})
-								}
-							</>
-						);
+						return inputs.map(({ id, label, rules, error }, idx) => {
+							return (
+								<Input
+									key={`${idx}-${id}`}
+									id={id}
+									label={label}
+									rules={rules}
+									error={error(form)}
+								/>
+							);
+						});
 					}
 				}
 			</Form>
