@@ -7,10 +7,12 @@ import { Button } from "@/components/elements/Form";
 import { Input } from "@/components/elements/Form";
 import Modal from "@/components/containers/Modal";
 
-export default function FormMaker({ isVisible, handleClose, mousePosition, makeConfig, type, textConfigs, handleSubmit }) {
+export default function FormMaker({ isVisible, handleClose, mousePosition, makeConfig, type, handleSubmit }) {
+	const config = makeConfig(type);
+
 	return (
 		<Modal
-			title={textConfigs(type).label}
+			title={config.label}
 			visible={isVisible}
 			onClose={handleClose}
 			wrapClassName={"center"}
@@ -27,7 +29,7 @@ export default function FormMaker({ isVisible, handleClose, mousePosition, makeC
 					<Button
 						type={"submit"}
 					>
-						{textConfigs(type).buttonLabel}
+						{config.buttonLabel}
 					</Button>
 				</>
 			}
@@ -52,7 +54,7 @@ export default function FormMaker({ isVisible, handleClose, mousePosition, makeC
 												id={id}
 												label={label}
 												rules={rules}
-												error={error}
+												error={error(form)}
 											/>
 										);
 									})

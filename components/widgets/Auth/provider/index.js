@@ -73,99 +73,103 @@ export default function AuthProvider({ children }) {
 		console.log(options);
 	}
 
-	function makeConfig(configType, form) {
-		switch (configType) {
+	function makeConfig(type) {
+		switch (type) {
 			case "register":
-				return [
-					{
-						id: "email",
-						label: "Введите свой имеил",
-						rules: [{ required: true }, { type: "email" }],
-						error: form.getFieldError("email"),
-					},
-					{
-						id: "password",
-						label: "Введите пароль",
-						rules: [
-							{ required: true },
-							context => ({
-								validator(_, __, callback) {
-									if (context.isFieldTouched("password2")) {
-										context.validateFields(["password2"]);
+				return {
+					label: "Регистрация",
+					buttonLabel: "Регистрация",
+					inputs: [
+						{
+							id: "email",
+							label: "Введите свой имеил",
+							rules: [{ required: true }, { type: "email" }],
+							error(form) {
+								return form.getFieldError("email");
+							},
+						},
+						{
+							id: "password",
+							label: "Введите пароль",
+							rules: [
+								{ required: true },
+								context => ({
+									validator(_, __, callback) {
+										if (context.isFieldTouched("password2")) {
+											context.validateFields(["password2"]);
+											callback();
+
+											return;
+										}
 										callback();
+									},
+								}),
+							],
+							error(form) {
+								return form.getFieldError("password");
+							},
+						},
+						{
+							id: "password2",
+							label: "Введите пароль повторно",
+							rules: [
 
-										return;
-									}
-									callback();
-								},
-							}),
-						],
-						error: form.getFieldError("password"),
-					},
-					{
-						id: "password2",
-						label: "Введите пароль повторно",
-						rules: [
-
-							{ required: true },
-							context => ({
-								validator(rule, value, callback) {
-									const { password } = context.getFieldsValue(true);
-									if (password !== value) {
-										callback("Not Same as password1!!!");
-									}
-									callback();
-								},
-							}),
-						],
-						error: form.getFieldError("password2"),
-					},
-				];
+								{ required: true },
+								context => ({
+									validator(rule, value, callback) {
+										const { password } = context.getFieldsValue(true);
+										if (password !== value) {
+											callback("Not Same as password1!!!");
+										}
+										callback();
+									},
+								}),
+							],
+							error(form) {
+								return form.getFieldError("password2");
+							},
+						},
+					],
+				};
 			case "login":
-				return [
-					{
-						id: "email",
-						label: "Введите свой имеил",
-						rules: [{ required: true }, { type: "email" }],
-						error: form.getFieldError("email"),
-					},
-					{
-						id: "password",
-						label: "Введите пароль",
-						rules: [
-							{ required: true },
-							context => ({
-								validator(_, __, callback) {
-									if (context.isFieldTouched("password2")) {
-										context.validateFields(["password2"]);
-										callback();
+				return {
+					label: "Авторизация",
+					buttonLabel: "Войти",
+					inputs: [
+						{
+							id: "email",
+							label: "Введите свой имеил",
+							rules: [{ required: true }, { type: "email" }],
+							error(form) {
+								return form.getFieldError("email");
+							},
+						},
+						{
+							id: "password",
+							label: "Введите пароль",
+							rules: [
+								{ required: true },
+								context => ({
+									validator(_, __, callback) {
+										if (context.isFieldTouched("password2")) {
+											context.validateFields(["password2"]);
+											callback();
 
-										return;
-									}
-									callback();
-								},
-							}),
-						],
-						error: form.getFieldError("password"),
-					},
-				];
+											return;
+										}
+										callback();
+									},
+								}),
+							],
+							error(form) {
+								return form.getFieldError("password");
+							},
+						},
+					],
+				};
 			default:
 				return [];
 		}
-	}
-
-	function textConfigs(configType) {
-		if (configType === "register") {
-			return {
-				label: "Регистрация",
-				buttonLabel: "Регистрация",
-			};
-		}
-
-		return {
-			label: "Авторизация",
-			buttonLabel: "Войти",
-		};
 	}
 
 	const { type, mousePosition, isVisible } = authFormState;
@@ -190,7 +194,6 @@ export default function AuthProvider({ children }) {
 						onClose,
 						makeConfig,
 						type,
-						textConfigs,
 						handleSubmit,
 					},
 					null,
