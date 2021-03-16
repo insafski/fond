@@ -1,4 +1,3 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
 import React from "react";
 import Form from "rc-field-form";
 import PropTypes from "prop-types";
