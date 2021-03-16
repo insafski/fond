@@ -2,7 +2,7 @@ import React, { createElement, useReducer } from "react";
 import PropTypes from "prop-types";
 
 import { AuthContextProvider } from "../context";
-import Form from "../Form";
+import FormMaker from "../FormMaker";
 
 export default function AuthProvider({ children }) {
 	const initialState = {
@@ -11,7 +11,7 @@ export default function AuthProvider({ children }) {
 		mousePosition: {
 			x: null,
 			y: null,
-		}
+		},
 	};
 
 	function reducer(state, { type, payload }) {
@@ -26,7 +26,7 @@ export default function AuthProvider({ children }) {
 			case "close":
 				return {
 					...state,
-					isVisible: false
+					isVisible: false,
 				};
 			default:
 				return initialState;
@@ -34,10 +34,6 @@ export default function AuthProvider({ children }) {
 	}
 
 	const [authFormState, dispatch] = useReducer(reducer, initialState);
-
-	function handleClose() {
-		toggle(false);
-	}
 
 	function handleOpenRegister(event) {
 		dispatch({
@@ -47,7 +43,7 @@ export default function AuthProvider({ children }) {
 				mousePosition: {
 					x: event.pageX,
 					y: event.pageY,
-				}
+				},
 			},
 		});
 	}
@@ -60,101 +56,108 @@ export default function AuthProvider({ children }) {
 				mousePosition: {
 					x: event.pageX,
 					y: event.pageY,
-				}
+				},
 			},
 		});
 	}
 
 	function handleClose() {
-		dispatch({type: "close"});
-	};
+		dispatch({ type: "close" });
+	}
 
 	function onClose() {
 		dispatch({});
 	}
 
-
-	function configs(configType, form){
+	function configs(configType, form) {
 		if (configType === "register") {
-			return  [
-						{
-							id: "email",
-							label: "Введите свой имеил",
-							rules: [{ required: true }, { type: "email" }],
-							error: form.getFieldError('email'),
-						}, {
-							id: "password",
-							label: "Введите пароль",
-							rules: [
-									{ required: true },
-									context => ({
-									validator(_, __, callback) {
-										if (context.isFieldTouched('password2')) {
-										context.validateFields(['password2']);
-										callback();
-										return;
-										}
-										callback();
-									},
-									}),
-							],
-							error: form.getFieldError('password'),
-						}, {
-							id: "password2",
-							label: "Введите пароль повторно",
-							rules: [
-
-								{ required: true },
-									context => ({
-									validator(rule, value, callback) {
-										const { password } = context.getFieldsValue(true);
-										if (password !== value) {
-											callback('Not Same as password1!!!');
-										}
-											callback();
-									},
-								}),
-							],
-							error: form.getFieldError('password2'),
-						}
-					]
-		} else {
 			return [
 				{
 					id: "email",
 					label: "Введите свой имеил",
 					rules: [{ required: true }, { type: "email" }],
-					error: form.getFieldError('email'),
-				},
-				{
+					error: form.getFieldError("email"),
+				}, {
 					id: "password",
 					label: "Введите пароль",
 					rules: [
-							{ required: true },
-							context => ({
+						{ required: true },
+						context => ({
 							validator(_, __, callback) {
-								if (context.isFieldTouched('password2')) {
-								context.validateFields(['password2']);
-								callback();
-								return;
+								if (context.isFieldTouched("password2")) {
+									context.validateFields(["password2"]);
+									callback();
+
+									return;
 								}
 								callback();
 							},
-							}),
+						}),
 					],
-					error: form.getFieldError('password'),
-				}
-			]
+					error: form.getFieldError("password"),
+				}, {
+					id: "password2",
+					label: "Введите пароль повторно",
+					rules: [
+
+						{ required: true },
+						context => ({
+							validator(rule, value, callback) {
+								const { password } = context.getFieldsValue(true);
+								if (password !== value) {
+									callback("Not Same as password1!!!");
+								}
+								callback();
+							},
+						}),
+					],
+					error: form.getFieldError("password2"),
+				},
+			];
 		}
+
+		return [
+			{
+				id: "email",
+				label: "Введите свой имеил",
+				rules: [{ required: true }, { type: "email" }],
+				error: form.getFieldError("email"),
+			},
+			{
+				id: "password",
+				label: "Введите пароль",
+				rules: [
+					{ required: true },
+					context => ({
+						validator(_, __, callback) {
+							if (context.isFieldTouched("password2")) {
+								context.validateFields(["password2"]);
+								callback();
+
+								return;
+							}
+							callback();
+						},
+					}),
+				],
+				error: form.getFieldError("password"),
+			},
+		];
 	}
 
-	// function textConfigs (configType){
-	// 	if (configType === "register") {
-	// 		return {
+	function textConfigs(configType) {
+		if (configType === "register") {
+			return {
+				label: "Регистрация",
+				buttonLabel: "Регистрация",
+			};
+		}
 
-	// 		}
-	// 	}
-	// }
+		return {
+			label: "Авторизация",
+			buttonLabel: "Войти",
+		};
+	}
 
 	const { type, mousePosition, isVisible } = authFormState;
 
@@ -164,10 +167,16 @@ export default function AuthProvider({ children }) {
 				authFormState,
 				handleOpenRegister,
 				handleOpenLogin,
-				handleClose
+				handleClose,
 			}}
 		>
-			{type && createElement(Form.get(type), { mousePosition, isVisible, handleClose, onClose, configs, type }, null)}
+			{type && createElement(FormMaker, { mousePosition,
+				isVisible,
+				handleClose,
+				onClose,
+				configs,
+				type,
+				textConfigs }, null)}
 			{children}
 		</AuthContextProvider>
 	);

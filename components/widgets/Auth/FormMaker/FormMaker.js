@@ -1,20 +1,20 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import React from "react";
-import Form from 'rc-field-form';
+import Form from "rc-field-form";
+import PropTypes from "prop-types";
 
-import { useAuthContext } from "@/components/widgets/Auth/context";
 import { Button } from "@/components/elements/Form";
 import { Input } from "@/components/elements/Form";
 import Modal from "@/components/containers/Modal";
-import { configs } from "eslint-plugin-prettier";
 
-export default function Register({ isVisible, handleClose, mousePosition, configs, type }) {
+export default function FormMaker({ isVisible, handleClose, mousePosition, configs, type, textConfigs }) {
 	const onFinish = values => {
-    	console.log('Finish:', values);
+    	console.log("Finish:", values);
 	};
 
 	return (
 		<Modal
-			title={ type === "register" ? "Регистрация" : "Авторизация"}
+			title={textConfigs(type).label}
 			visible={isVisible}
 			onClose={handleClose}
 			wrapClassName={"center"}
@@ -24,7 +24,7 @@ export default function Register({ isVisible, handleClose, mousePosition, config
 			footer={
 				<>
 					<Button onClick={handleClose}>Отмена</Button>
-					<Button type="submit" onClick={onFinish}>Регистрация</Button>
+					<Button type="submit" onClick={onFinish}>{textConfigs(type).buttonLabel}</Button>
 				</>
 			}
 			mousePosition={mousePosition}
@@ -33,7 +33,7 @@ export default function Register({ isVisible, handleClose, mousePosition, config
 				{(values, form) => {
 					const errors = form.getFieldsError();
 					if (errors) {
-						console.log('Render with Errors:', values, form.getFieldsError());
+						console.log("Render with Errors:", values, form.getFieldsError());
 					}
 
 					return (
@@ -42,12 +42,13 @@ export default function Register({ isVisible, handleClose, mousePosition, config
 								configs(type, form).map(({ id, label, rules, error }) => {
 									return (
 										<Input
+											key={id}
 											id={id}
 											label={label}
 											rules={rules}
 											error={error}
 										/>
-									)
+									);
 								})
 							}
 						</>
@@ -55,5 +56,26 @@ export default function Register({ isVisible, handleClose, mousePosition, config
 				}}
 			</Form>
 		</Modal>
-	)
+	);
 }
+
+FormMaker.propTypes = {
+	isVisible: PropTypes.bool,
+	handleClose: PropTypes.func,
+	mousePosition: PropTypes.object,
+	configs: PropTypes.func,
+	type: PropTypes.string,
+	textConfigs: PropTypes.func,
+};
+
+FormMaker.defaultProps = {
+	isVisible: false,
+	handleClose: () => Function,
+	mousePosition: {
+		x: null,
+		y: null,
+	},
+	configs: () => Function,
+	type: "",
+	textConfigs: () => Function,
+};
