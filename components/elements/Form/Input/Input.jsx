@@ -14,7 +14,7 @@ export const StyledLabel = styled.label`
 `;
 
 
-export default function Input({ id, label, error, rules, value, ...props }) {
+export default function Input({ id, label, error, rules, value, ...props}) {
 	const { Field } = Form;
 
 	const Error = ({ children }) => (
@@ -25,13 +25,15 @@ export default function Input({ id, label, error, rules, value, ...props }) {
 		</ul>
 	);
 
-	return [
-		<StyledLabel key={`label=${id}`} htmlFor={id}>{label}</StyledLabel>,
-		<Field name={id} rules={rules}>
-			<StyledInput key={`input-${id}`} id={id} value={value} {...props} />
-		</Field>,
-		<Error>{error}</Error>
-	];
+	return (
+		<div key={id}>
+			<StyledLabel key={`label=${id}`} htmlFor={id}>{label}</StyledLabel>
+			<Field name={id} rules={rules}>
+				<StyledInput key={`input-${id}`} id={id} value={value} {...props} />
+			</Field>
+			<Error>{error}</Error>
+		</div>
+	);
 }
 
 Input.propTypes = {

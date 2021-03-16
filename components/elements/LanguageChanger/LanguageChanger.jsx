@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Menu from "@/components/containers/Menu";
 import cx from "classnames";
 
-import LinkMaker from "../../../utils/linkMaker";
+import Link from "@/components/elements/Link";
 import Dropdown from "@/components/containers/Dropdown";
 
 import UK from "@/assets/locales/uk.svg";
@@ -78,12 +78,12 @@ export default function LanguageChanger() {
 			{
 				router.locales.map((item, idx) => (
 					<Fragment key={idx}>
-						<LinkMaker href={`${router.pathname}`} locale={item}>
+						<Link href={`${router.pathname}`} locale={item}>
 							<div className={cx("flex items-center px-4 py-2", localesConfig[item].class, { "border-b border-solid border-gray-300": idx !== router.locales.length - 1 })}>
 								<img key={item} src={localesConfig[item].icon} className={"w-8 mr-4"}/>
 								<span>{localesConfig[item].title}</span>
 							</div>
-						</LinkMaker>
+						</Link>
 					</Fragment>
 				))
 			}
@@ -95,10 +95,10 @@ export default function LanguageChanger() {
 			<Dropdown
 				trigger={["click"]}
 				overlay={menu}
-				animation="slide-up"
+				animation={"slide-up"}
 			>
 				<button className={"bg-gray-800 ring-2 ring-white flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"}>
-					<img class="h-8 w-8 rounded-full" src={localesConfig[router.locale].icon} alt=""/>
+					<img className="h-8 w-8 rounded-full" src={localesConfig[router.locale].icon} alt=""/>
 				</button>
 			</Dropdown>
 		</div>

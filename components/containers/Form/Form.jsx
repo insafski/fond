@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import RCForm from "rc-field-form";
 
-// For more information see: https://github.com/react-component/field-form
 
 export default function Form({ onFinish, children }) {
 	return (
@@ -14,11 +13,12 @@ export default function Form({ onFinish, children }) {
 
 Form.propTypes = {
 	onFinish: PropTypes.func,
-	children: PropTypes.node,
+	children: PropTypes.func,
 };
 
 Form.defaultProps = {
 	onFinish: () => Function,
+	children: () => {}
 };
 
 Form.displayName = "Form";

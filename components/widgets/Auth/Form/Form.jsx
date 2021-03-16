@@ -1,5 +1,5 @@
-import React from "react";
-import Form from "rc-field-form";
+import React, { useState } from "react";
+import Form from "@/components/containers/Form";
 import PropTypes from "prop-types";
 import get from "lodash/get";
 
@@ -8,13 +8,30 @@ import { Input } from "@/components/elements/Form";
 import Modal from "@/components/containers/Modal";
 
 export default function FormMaker({ isVisible, handleClose, mousePosition, makeConfig, type }) {
+	const [formValue, setFormValue] = useState({})
+	const [error, setError] = useState(false)
+
+	function handleOnChange(value){
+		setFormValue(value);
+	}
+
 	const config = makeConfig(type);
 
 	const inputs = get(config, "inputs", []);
 	const title = get(config, "title", "");
 
-	function handleSubmit(values) {
-		console.info({ values });
+	function handleValidate(errors) {
+		// console.log(errors)
+		errors.forEach((item) => {
+			console.log(item.errors.length ? "true" : "false")
+			item.errors.length ? setError(true) : setError(false);
+		})
+	}
+
+	console.log(error);
+
+	function handleSubmit() {
+		console.info(formValue);
 	}
 
 	return (
@@ -35,6 +52,7 @@ export default function FormMaker({ isVisible, handleClose, mousePosition, makeC
 					</Button>
 					<Button
 						type={"submit"}
+						onClick={handleSubmit}
 					>
 						{config.buttonLabel}
 					</Button>
@@ -42,14 +60,14 @@ export default function FormMaker({ isVisible, handleClose, mousePosition, makeC
 			}
 			mousePosition={mousePosition}
 		>
-			<Form style={{ padding: 16 }} onFinish={handleSubmit}>
+			<Form
+				onFinish={handleSubmit}
+			>
 				{
 					(values, form) => {
 						const errors = form.getFieldsError();
-
-						if (errors) {
-							console.log("Render with Errors:", values, form.getFieldsError());
-						}
+						handleValidate(errors)
+						handleOnChange(values)
 
 						return inputs.map(({ id, label, rules, error }, idx) => {
 							return (
