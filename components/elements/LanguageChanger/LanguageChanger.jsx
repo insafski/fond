@@ -83,7 +83,7 @@ export default function LanguageChanger() {
 
 					return (
 						<Fragment key={idx}>
-							<Link href={`${router.pathname}`} locale={item}>
+							<Link href={`${router.asPath}`} locale={item}>
 								<div className={cx("flex items-center px-4 py-2", classOption, { "border-b border-solid border-gray-300": idx !== router.locales.length - 1 })}>
 									<img key={item} src={icon} className={"w-8 mr-4"} />
 									<span>{title}</span>
