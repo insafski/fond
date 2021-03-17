@@ -5,19 +5,18 @@ import { client } from "../utils/apollo";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
-import { GET_EXCHANGE_RATES } from "@/components/queries/queries.graphql";
+import { GET_EXCHANGE_RATES } from "@/queries/queries.graphql";
 
 export default function Home({ data }) {
 	const { t } = useTranslation("common");
 
 	return (
 		<>
-			<div className={"testStyle"}>News</div>
 			{t("change-locale")}
 			{t("change-locale")}
 			{t("change-locale")}
 			{t("change-locale")}
-			<ul>
+			{/* <ul>
 				{
 					data.map((item, idx) => (
 						<li key={idx}>
@@ -25,7 +24,7 @@ export default function Home({ data }) {
 						</li>
 					))
 				}
-			</ul>
+			</ul> */}
 		</>
 	);
 }
@@ -44,16 +43,17 @@ export async function getStaticProps({ locale }) {
 	});
 
 	if (!data) {
-		console.error("Error while fetching")
+		console.error("Error while fetching");
+
 		return {
 			notFound: true,
-		}
+		};
  	}
 
 	return {
 		props: {
 			...await serverSideTranslations(locale, ["common"]),
-			data: data.news,
+			data,
 		},
 	};
 }

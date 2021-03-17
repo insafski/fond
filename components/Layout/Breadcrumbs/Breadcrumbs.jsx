@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import React from "react";
 import Link from "next/link";
+import PropTypes from "prop-types";
 
-export default function Breadcrumbs() {
-	const router = useRouter();
-	const [breadcrumbs, setBreadcrumbs] = useState(null);
+import styles from "./Breadcrumbs.module.scss";
 
+export default function Breadcrumbs({ breadcrumbs }) {
 	function convertBreadcrumb(string) {
 		return string
 			.replace(/-/g, " ")
@@ -15,37 +14,20 @@ export default function Breadcrumbs() {
 			.toUpperCase();
 	}
 
-	useEffect(() => {
-		if (router) {
-			const linkPath = router.asPath.split("/");
-
-			linkPath.shift();
-
-			const pathArray = linkPath.map((path, i) => {
-				return {
-					breadcrumb: path,
-					href: `/${linkPath.slice(0, i + 1).join("/")}`,
-				};
-			});
-
-			setBreadcrumbs(pathArray);
-		}
-	}, [router]);
-
 	return !!breadcrumbs && (
 		<nav aria-label={"breadcrumbs"} className={"breadcrumbs"}>
 			<ul className={"breadcrumbs__list flex"}>
-				<li className={"breadcrumbs__item mr-4"}>
+				<li className={"breadcrumbs__item"}>
 					<Link href={"/"}>
-						<a>Главная</a>
+						<a className={styles.breadcrumbs__link}>Главная</a>
 					</Link>
 				</li>
 				{
 					breadcrumbs.map(({ href, breadcrumb }, idx) => {
 						return (
-							<li key={`${href}-${idx}`} className={"breadcrumbs__item mr-4"}>
+							<li key={`${href}-${idx}`} className={"breadcrumbs__item"}>
 								<Link href={href}>
-									<a className={"breadcrumbs__link"}>
+									<a className={styles.breadcrumbs__link}>
 										{convertBreadcrumb(breadcrumb)}
 									</a>
 								</Link>
@@ -57,3 +39,11 @@ export default function Breadcrumbs() {
 		</nav>
 	);
 }
+
+Breadcrumbs.propTypes = {
+	breadcrumbs: PropTypes.array,
+};
+
+Breadcrumbs.defaultProps = {
+	breadcrumbs: [],
+};

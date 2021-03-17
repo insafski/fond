@@ -3,8 +3,8 @@ import ErrorPage from "next/error";
 import { useRouter } from "next/dist/client/router";
 import PropTypes from "prop-types";
 
-import Sections from "../Sections";
-import Seo from "@/components/elements/seo";
+import Sections from "./Sections";
+import Seo from "@/components/elements/SEO";
 import Section from "@/components/containers/Section";
 
 export default function Page({ sections, metadata, heading, mainPage, title, subTitle, preview, slug, description }) {
