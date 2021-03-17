@@ -9,7 +9,7 @@ export default function Authorization() {
 
 	const menu = (
 		<Menu selectable={true} className={"rounded-none shadow-none bg-white border border-solid border-gray-300 outline-none"}>
-			<div key="login" className={"place-content-center	border-b border-solid border-gray-300 flex items-center p-4"} onClick={handleOpenLogin}>
+			<div key="login" className={"place-content-center border-b border-solid border-gray-300 flex items-center p-4"} onClick={handleOpenLogin}>
 				Login
 			</div>
 			<div key="register" className={"flex items-center p-4"} onClick={handleOpenRegister}>

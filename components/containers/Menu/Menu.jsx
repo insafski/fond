@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import RCMenu from "rc-menu";
 
-export default function Menu({children, className, mode, activeKey, defaultActiveFirst, multiple, onClick, selectable}) {
+export default function Menu({ children, className, mode, activeKey, defaultActiveFirst, multiple, onClick, selectable }) {
 	return (
 		<RCMenu
 			className={className}
@@ -15,10 +15,8 @@ export default function Menu({children, className, mode, activeKey, defaultActiv
 		>
 			{children}
 		</RCMenu>
-	)
+	);
 }
-
-
 
 Menu.propTypes = {
 	children: PropTypes.node,
@@ -28,7 +26,7 @@ Menu.propTypes = {
 	defaultActiveFirst: PropTypes.bool,
 	multiple: PropTypes.bool,
 	onClick: PropTypes.func,
-	selectable:PropTypes.bool
+	selectable: PropTypes.bool,
 };
 
 Menu.defaultProps = {
@@ -39,7 +37,7 @@ Menu.defaultProps = {
 	defaultActiveFirst: false,
 	multiple: false,
 	onClick: () => Function,
-	selectable: false
+	selectable: false,
 };
 
 Menu.displayName = "Menu";

@@ -23,7 +23,8 @@ Dropdown.propTypes = {
 	overlay: PropTypes.object,
 	animation: PropTypes.string,
 	children: PropTypes.node,
-	overlayClassName: PropTypes.string
+	overlayClassName: PropTypes.string,
+	placement: PropTypes.string,
 };
 
 Dropdown.defaultProps = {
@@ -31,7 +32,8 @@ Dropdown.defaultProps = {
 	overlay: "",
 	animation: "",
 	children: "",
-	overlayClassName: ""
+	overlayClassName: "",
+	placement: "",
 };
 
 Dropdown.displayName = "Dropdown";
