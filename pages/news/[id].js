@@ -75,14 +75,14 @@ export async function getStaticPaths() {
 		query: GET_EXCHANGE_RATES_NEWS,
 	});
 	const paths = data.cities.map(({ id }) => {
-		return [...["en", "ru", "el", "sr", "fr", "ge", "al", "ae", "he", "tr", "cn", "ja"].map(local => {
+		return ["en", "ru", "el", "sr", "fr", "ge", "al", "ae", "he", "tr", "cn", "ja"].map(local => {
 			return {
 				params: {
 					id: `${id}`,
 				},
 				locale: local,
 			};
-		})];
+		});
 	});
 
 	return { paths: paths.flat(),

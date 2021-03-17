@@ -8,10 +8,10 @@ import { Input } from "@/components/elements/Form";
 import Modal from "@/components/containers/Modal";
 
 export default function FormMaker({ isVisible, handleClose, mousePosition, makeConfig, type }) {
-	const [formValue, setFormValue] = useState({})
-	const [error, setError] = useState(false)
+	const [formValue, setFormValue] = useState({});
+	const [error, setError] = useState(false);
 
-	function handleOnChange(value){
+	function handleOnChange(value) {
 		setFormValue(value);
 	}
 
@@ -22,10 +22,10 @@ export default function FormMaker({ isVisible, handleClose, mousePosition, makeC
 
 	function handleValidate(errors) {
 		// console.log(errors)
-		errors.forEach((item) => {
-			console.log(item.errors.length ? "true" : "false")
+		errors.forEach(item => {
+			console.log(item.errors.length ? "true" : "false");
 			item.errors.length ? setError(true) : setError(false);
-		})
+		});
 	}
 
 	console.log(error);
@@ -66,8 +66,8 @@ export default function FormMaker({ isVisible, handleClose, mousePosition, makeC
 				{
 					(values, form) => {
 						const errors = form.getFieldsError();
-						handleValidate(errors)
-						handleOnChange(values)
+						handleValidate(errors);
+						handleOnChange(values);
 
 						return inputs.map(({ id, label, rules, error }, idx) => {
 							return (
