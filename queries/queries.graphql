@@ -1,0 +1,12 @@
+query PAGES {
+  pages {
+    data
+    slug
+  }
+}
+
+query PAGE($slug: String!) {
+  pages(where: {slug: {_eq: $slug}}) {
+    data
+  }
+}

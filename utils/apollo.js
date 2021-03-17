@@ -1,10 +1,11 @@
+import React from "react";
 import { ApolloClient, ApolloProvider, InMemoryCache, HttpLink } from "@apollo/client";
 
 export const client = new ApolloClient({
 	link: new HttpLink({
-		uri: "https://gql-test.serafim.help/v1/graphql",
+		uri: process.env.HASURA_ENDPOINT,
 		headers: {
-			"x-hasura-admin-secret": "password-for-hasura-test",
+			"x-hasura-admin-secret": process.env.HASURA_ADMIN_SECRET,
 		},
 	}),
 	cache: new InMemoryCache(),

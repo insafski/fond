@@ -23,12 +23,9 @@ export default function FormMaker({ isVisible, handleClose, mousePosition, makeC
 	function handleValidate(errors) {
 		// console.log(errors)
 		errors.forEach(item => {
-			console.log(item.errors.length ? "true" : "false");
 			item.errors.length ? setError(true) : setError(false);
 		});
 	}
-
-	console.log(error);
 
 	function handleSubmit() {
 		console.info(formValue);

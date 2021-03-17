@@ -1,59 +1,35 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { gql } from "@apollo/client";
 import { client } from "../utils/apollo";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useTranslation } from "next-i18next";
+import get from "lodash/get";
 
-import { GET_EXCHANGE_RATES } from "@/components/queries/queries.graphql";
+import Page from "@/components/containers/Page";
 
-export default function Home({ data }) {
-	const { t } = useTranslation("common");
-
-	return (
-		<>
-			<div className={"testStyle"}>News</div>
-			{t("change-locale")}
-			{t("change-locale")}
-			{t("change-locale")}
-			{t("change-locale")}
-			<ul>
-				{
-					data.map((item, idx) => (
-						<li key={idx}>
-							{item.page_title_full} -- {item.id}
-						</li>
-					))
-				}
-			</ul>
-		</>
-	);
-}
-
-Home.propTypes = {
-	data: PropTypes.array,
-};
-
-Home.defaultProps = {
-	data: [],
-};
+import { PAGE } from "@/queries/queries.graphql";
 
 export async function getStaticProps({ locale }) {
-	const { data } = await client.query({
-		query: GET_EXCHANGE_RATES,
+	const response = await client.query({
+		query: PAGE,
+		variables: {
+			slug: "/",
+		},
 	});
 
-	if (!data) {
-		console.error("Error while fetching")
+	const page = get(response, "data.pages[0].data", null);
+
+	if (!page) {
+		console.error("Error while fetching");
+
 		return {
 			notFound: true,
-		}
- 	}
+		};
+	}
 
 	return {
 		props: {
 			...await serverSideTranslations(locale, ["common"]),
-			data: data.news,
+			...page,
 		},
 	};
 }
+
+export default Page;
