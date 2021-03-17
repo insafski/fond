@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import get from "lodash/get";
 
 import Breadcrumbs from "@/components/Layout/Breadcrumbs";
 
@@ -24,7 +25,7 @@ export default function BreadcrumbsBar() {
 		}
 	}, [router]);
 
-	return breadcrumbs.length && breadcrumbs[0].href !== "/" && (
+	return breadcrumbs.length && get(breadcrumbs, "[0].href", "") !== "/" && (
 		<div className="breaadcrumb-bar">
 			<div className="container py-4">
 				<Breadcrumbs breadcrumbs={breadcrumbs} />

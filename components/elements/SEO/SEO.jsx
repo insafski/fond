@@ -8,19 +8,21 @@ export default function SEO({ metadata }) {
 		return null;
 	}
 
+	const { metaTitle, metaDescription, twitterCardType, twitterUsername } = metadata;
+
 	return (
 		<NextSeo
-			title={metadata.metaTitle}
-			description={metadata.metaDescription}
+			title={metaTitle}
+			description={metaDescription}
 			openGraph={{
 				// Title and description are mandatory
-				title: metadata.metaTitle,
-				description: metadata.metaDescription,
+				title: metaTitle,
+				description: metaDescription,
 			}}
 			// Only included Twitter data if we have it
 			twitter={{
-				...metadata.twitterCardType && { cardType: metadata.twitterCardType },
-				...metadata.twitterUsername && { cardType: metadata.twitterUsername },
+				...twitterCardType && { cardType: twitterCardType },
+				...twitterUsername && { cardType: twitterUsername },
 			}}
 		/>
 	);
