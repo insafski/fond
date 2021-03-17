@@ -1,19 +1,16 @@
-import Resact from "react";
-
-import Image from "next/image";
+import React from "react";
 import PropTypes from "prop-types";
 
-import logo from "@/assets/img/test-logo.png";
-import LinkMaker from "@/utils/linkMaker";
+import Link from "@/components/elements/Link";
 
 export default function Logo({ title }) {
 	return (
-		<LinkMaker href={"news"}>
-			<div>
-				<Image src={logo} width={100} height={100} />
-				{title}
+		<Link href={"news"}>
+			<div className={"flex flex-row items-center"}>
+				<img className="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg" alt="Workflow" />
+				<img className="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow"/>
 			</div>
-		</LinkMaker>
+		</Link>
 	);
 }
 

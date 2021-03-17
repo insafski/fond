@@ -1,5 +1,4 @@
 import React from "react";
-import { Function } from "core-js";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";

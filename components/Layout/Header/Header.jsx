@@ -1,13 +1,13 @@
 import React from "react";
 
-import Navigation from "./Navigation";
-import Search from "@/components/elements/Search";
+import NavigationBar from "@/components/Layout/Bars/NavigationBar";
 
 export default function Header() {
 	return (
-		<header className={"header"}>
-			<Navigation />
-			<Search />
+		<header className={"header bg-gray-800 flex flex-row py-4"}>
+			<div className="container">
+				<NavigationBar />
+			</div>
 		</header>
 	);
 }
