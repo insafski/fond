@@ -4,14 +4,13 @@ import RCDropdown from "rc-dropdown";
 
 import "rc-dropdown/assets/index.css";
 
-export default function Dropdown({ trigger, overlay, animation, children, overlayClassName, placement }) {
+export default function Dropdown({ trigger, overlay, animation, children, overlayClassName }) {
 	return (
 		<RCDropdown
 			trigger={trigger}
 			overlay={overlay}
 			animation={animation}
 			overlayClassName={overlayClassName}
-			placement={placement}
 		>
 			{children}
 		</RCDropdown>
@@ -24,7 +23,6 @@ Dropdown.propTypes = {
 	animation: PropTypes.string,
 	children: PropTypes.node,
 	overlayClassName: PropTypes.string,
-	placement: PropTypes.string,
 };
 
 Dropdown.defaultProps = {
@@ -33,7 +31,6 @@ Dropdown.defaultProps = {
 	animation: "",
 	children: "",
 	overlayClassName: "",
-	placement: "",
 };
 
 Dropdown.displayName = "Dropdown";

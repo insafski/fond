@@ -8,11 +8,7 @@ export default function Navigation({ items }) {
 	return (
 		<div className={"navigation flex justify-between"}>
 			<div className={"navigation__logo flex-shrink-0 flex items-center"}>
-				<Link href={"/"}>
-					<a href={"/"}>
-						<Logo title={"title"} />
-					</a>
-				</Link>
+				<Logo title={"title"} />
 			</div>
 			<nav className={"navigation__container hidden sm:block sm:ml-6"}>
 				<ul className={"navigation__list flex space-x-4"}>
