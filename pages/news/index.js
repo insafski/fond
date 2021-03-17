@@ -32,6 +32,13 @@ export async function getStaticProps({locale}) {
 		query: GET_EXCHANGE_RATES_NEWS,
 	});
 
+	if (!data) {
+		console.error("Error while fetching")
+		return {
+			notFound: true,
+		}
+ 	}
+
 	return {
 		props: {
 			...(await serverSideTranslations(locale, ["common"])),
