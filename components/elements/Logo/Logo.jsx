@@ -1,16 +1,39 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import Link from "@/components/elements/Link";
-import Logo_PC from "@/assets/icons/Logo.svg";
-import Logo_mobile from "@/assets/icons/Logo_mobile.png";
+import Icon from "@/components/elements/Icon";
+import LogoDeskTop from "@/assets/icons/Logo.svg";
 
-export default function Logo() {
+export default function Logo({ type }) {
+	const logos = {
+		header: <img className="lg:block h-10 w-auto" src={LogoDeskTop} alt="Workflow" />,
+		footer: <Icon type={"logo"} className={"text-7xl"}/>,
+		get() {
+			return this[type] || null;
+		},
+	};
+
 	return (
 		<Link href={"/news"}>
-			<div className={"flex flex-row items-center"}>
-				<img className="hidden lg:block h-10 w-auto" src={Logo_PC} alt="Workflow" />
-				<img className="block lg:hidden h-10 w-auto" src={Logo_mobile} alt="Workflow"/>
+			<div className={`flex flex-row items-center ${type === "footer" && "text-yellow-600"}`}>
+				{logos.get(type)}
+				<span>
+					ФОНД ПОДДЕРЖКИ
+					<br/>
+					ХРИСТИАНСКОЙ КУЛЬТУРЫ
+					<br />
+					И НАСЛЕДИЯ
+				</span>
 			</div>
 		</Link>
 	);
 }
+
+Logo.propTypes = {
+	type: PropTypes.string,
+};
+
+Logo.defaultProps = {
+	type: "",
+};

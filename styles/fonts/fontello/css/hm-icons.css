@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'hm-icons';
-  src: url('../font/hm-icons.eot?74180269');
-  src: url('../font/hm-icons.eot?74180269#iefix') format('embedded-opentype'),
-       url('../font/hm-icons.woff2?74180269') format('woff2'),
-       url('../font/hm-icons.woff?74180269') format('woff'),
-       url('../font/hm-icons.ttf?74180269') format('truetype'),
-       url('../font/hm-icons.svg?74180269#hm-icons') format('svg');
+  src: url('../font/hm-icons.eot?9400067');
+  src: url('../font/hm-icons.eot?9400067#iefix') format('embedded-opentype'),
+       url('../font/hm-icons.woff2?9400067') format('woff2'),
+       url('../font/hm-icons.woff?9400067') format('woff'),
+       url('../font/hm-icons.ttf?9400067') format('truetype'),
+       url('../font/hm-icons.svg?9400067#hm-icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'hm-icons';
-    src: url('../font/hm-icons.svg?74180269#hm-icons') format('svg');
+    src: url('../font/hm-icons.svg?9400067#hm-icons') format('svg');
   }
 }
 */
@@ -68,12 +68,13 @@
 .fscch-right-open-big:before { content: '\e80a'; } /* '' */
 .fscch-up-open-big:before { content: '\e80b'; } /* '' */
 .fscch-youtube:before { content: '\e80c'; } /* '' */
-.fscch-twitter:before { content: '\e80d'; } /* '' */
+.fscch-facebook:before { content: '\e80d'; } /* '' */
 .fscch-instagram:before { content: '\e80e'; } /* '' */
-.fscch-facebook:before { content: '\e80f'; } /* '' */
-.fscch-vk:before { content: '\e810'; } /* '' */
+.fscch-twitter:before { content: '\e80f'; } /* '' */
+.fscch-cancel:before { content: '\e810'; } /* '' */
 .fscch-eye:before { content: '\e811'; } /* '' */
 .fscch-eye-off:before { content: '\e812'; } /* '' */
 .fscch-search:before { content: '\e813'; } /* '' */
 .fscch-user:before { content: '\e814'; } /* '' */
-.fscch-cancel:before { content: '\e815'; } /* '' */
+.fscch-vk:before { content: '\e815'; } /* '' */
+.fscch-logo:before { content: '\e816'; } /* '' */
