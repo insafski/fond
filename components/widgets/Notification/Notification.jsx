@@ -16,7 +16,7 @@ export default function Notification({ message }) {
 	notification.notice({
 		content: { message },
 		closable: true,
-		closeIcon: <i className={"hm-forward"}/>,
+		closeIcon: <i className={"fscch-cancel"}/>,
 		duration: 0,
 	});
 }

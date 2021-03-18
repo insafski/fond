@@ -1,3 +1,4 @@
+import React from "react";
 import { animateScroll as scroll } from "react-scroll";
 import { useEffect } from "react";
 import { useToggle } from "ahooks";
@@ -14,13 +15,13 @@ export default function BackTop() {
 
 	useEffect(() => {
 		window.addEventListener("scroll", handleScroll);
-		//TODO: Need to use useScroll
+
 		return () => window.removeEventListener("scroll", handleScroll);
 	});
 
 	return (
 		<button className={cx(styles.backtop, { [styles.hide]: !state })} onClick={() => scroll.scrollToTop()}>
-			<i className={"hm-forward"}></i>
+			<i className={"fscch-up-open"}></i>
 		</button>
 	);
 }

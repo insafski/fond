@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function Contacts() {
 	return (
 		<ul className="sm:text-white mt-2">

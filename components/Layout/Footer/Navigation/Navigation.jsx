@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function Navigation() {
 	return (
 		<ul className="mt-2 sm:text-white">
