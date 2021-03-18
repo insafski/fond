@@ -2,7 +2,7 @@ import React from "react";
 
 import { Auth } from "@/components/widgets/Auth";
 import LanguageChanger from "@/components/elements/LanguageChanger";
-import Search from "@/components/elements/Search";
+import { Search } from "@/components/widgets/Search";
 import Navigation from "@/components/Layout/Header/Navigation";
 
 export default function NavigationBar() {
