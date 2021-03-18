@@ -1,8 +1,8 @@
 import React from "react";
 
 import Logo from "@/components/elements/Logo";
+import SocialNetworks from "@/components/elements/SocialNetworks";
 import Navigation from "./Navigation";
-import SocialNetworks from "../../elements/SocialNetworks";
 
 export default function Footer() {
 	return (
@@ -10,7 +10,7 @@ export default function Footer() {
 			<div className="container">
 				<div className="footer__body flex flex-col md:flex-row">
 					<div className="footer__item md:w-3/12">
-						<Logo type={"footer"}/>
+						<Logo type={"footer"} className={"text-yellow-600"} />
 					</div>
 					<div className="footer__item md:w-6/12">
 						<Navigation />
