@@ -9,6 +9,7 @@ export default function Sections({ sections }) {
 		<div className={"flex flex-col"}>
 			{
 				(sections || []).map((section, idx) => {
+					console.log(section);
 					const component = get(section, "component", "");
 					const heading = {
 						title: get(section, "title"),
