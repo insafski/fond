@@ -6,9 +6,9 @@ import Link from "@/components/elements/Link";
 import Icon from "@/components/elements/Icon";
 import logo from "@/assets/icons/Logo.svg";
 
-export default function Logo({ type, className }) {
+export default function Logo({ type, className, classNameLogo }) {
 	const logos = {
-		header: <img className={"lg:block h-10 w-auto"} src={logo} alt="Workflow" />,
+		header: <img className={cx("lg:block h-10 w-auto", classNameLogo)} src={logo} alt="Workflow" />,
 		footer: <Icon type={"logo"} className={"text-7xl"}/>,
 		get() {
 			return this[type] || null;
@@ -34,11 +34,13 @@ export default function Logo({ type, className }) {
 Logo.propTypes = {
 	type: PropTypes.string,
 	className: PropTypes.string,
+	classNameLogo: PropTypes.string,
 };
 
 Logo.defaultProps = {
 	type: "",
 	className: "",
+	classNameLogo: "",
 };
 
 Logo.displayName = "Logo";
