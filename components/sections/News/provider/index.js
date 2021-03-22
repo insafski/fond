@@ -80,7 +80,6 @@ export default function NewsProvider({ children }) {
 	}
 
 	function handleSetLocation(location) {
-		console.log("LOCATION", location);
 		dispatch({
 			type: "setLocation",
 			payload: location,
