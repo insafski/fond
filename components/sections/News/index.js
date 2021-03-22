@@ -1,5 +1,5 @@
-import NewsContext, { useNewsContext } from "./context";
+import NewsContext, { useNews } from "./context";
 import NewsProvider from "./provider";
 import News from "./component/News";
 
-export { NewsContext, useNewsContext, NewsProvider, News };
+export { NewsContext, useNews, NewsProvider, News };

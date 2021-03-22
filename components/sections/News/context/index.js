@@ -5,7 +5,7 @@ export const NewsContext = createContext();
 NewsContext.displayName = "NewsContext";
 
 export const NewsContextProvider = NewsContext.Provider;
-export const useNewsContext = () => {
+export const useNews = () => {
 	return useContext(NewsContext);
 };
 export default NewsContext;

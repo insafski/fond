@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Section from "@/components/containers/Section";
 import Notification from "@/components/widgets/Notification";
 import List from "@/components/containers/List";
-import { useNewsContext } from "../context";
+import { useNews } from "../context";
 import NewsLocation from "./NewsLocation";
 import AllNews from "./AllNews";
 import LoadMore from "./LoadMore";
@@ -19,7 +19,7 @@ export default function News({ mainPage, newsPage }) {
 		errorMessage,
 		location,
 		handleSetLocation,
-	} = useNewsContext();
+	} = useNews();
 
 	const data = [
 		{
