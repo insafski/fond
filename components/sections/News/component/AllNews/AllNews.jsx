@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import PropTypes from "prop-types";
 
 import Link from "@/components/elements/Link";
 
@@ -16,11 +15,3 @@ export default function AllNews() {
 		</Link>
 	);
 }
-
-AllNews.propTypes = {
-	loadMore: PropTypes.func,
-};
-
-AllNews.defaultProp = {
-	loadMore: () => {},
-};

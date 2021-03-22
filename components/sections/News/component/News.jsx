@@ -121,15 +121,23 @@ export default function News({ mainPage, newsPage }) {
 			<Section className={"flex flex-col"}>
 				<div className="container">
 					<div className="news-controllers flex justify-end mb-8">
-						<div className="news-headign flex-1 flex items-center pl-8 text-4xl	font-bold">
+						<div className="news-headign flex-1 flex items-center pl-8 text-4xl font-bold">
 							<span> Новости </span>
 						</div>
 						{
 							mainPage && (<AllNews/>)
 						}
-						<NewsLocation handleSetLocation={handleSetLocation} loadLocation={loadLocation} location={location}/>
+						<NewsLocation
+							handleSetLocation={handleSetLocation}
+							loadLocation={loadLocation}
+							location={location}
+						/>
 					</div>
-					<List items={data} type={"news"} className={"flex content-between justify-between w-full h-full flex-wrap"} />
+					<List
+						items={data}
+						type={"news"}
+						className={"flex content-between justify-between w-full h-full flex-wrap"}
+					/>
 					{
 						newsPage && (
 							<div className={"flex place-content-center"}>

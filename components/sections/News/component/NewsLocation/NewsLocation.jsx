@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import { useRouter } from "next/router";
 import cx from "classnames";
 import PropTypes from "prop-types";
+import get from "lodash/get";
 
 import Dropdown from "@/components/containers/Dropdown";
 import { localesConfig } from "@/utils/localesConfig";
@@ -28,9 +29,9 @@ export default function NewsLocation({ handleSetLocation, location, loadLocation
 		>
 			{
 				router.locales.map((item, idx) => {
-					const icon = localesConfig[item].icon;
-					const country = localesConfig[item].country;
-					const classOption = localesConfig[item].class;
+					const icon = get(localesConfig[item], "icon", "");
+					const country = get(localesConfig[item], "country", "");
+					const classOption = get(localesConfig[item], "class", "");
 
 					return (
 						<Fragment key={idx} >

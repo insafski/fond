@@ -15,13 +15,6 @@ module.exports = {
 				},
 			},
 		},
-		flex: {
-			1: "1 1 0%",
-			auto: "1 1 auto",
-			initial: "0 1 auto",
-			none: "none",
-			2: "1 1 33%",
-		},
 	},
 	plugins: [
 		require("@tailwindcss/typography"),

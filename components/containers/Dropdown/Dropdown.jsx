@@ -29,7 +29,7 @@ Dropdown.defaultProps = {
 	trigger: [],
 	overlay: "",
 	animation: "",
-	children: () => Function,
+	children: <></>,
 	overlayClassName: "",
 };
 
