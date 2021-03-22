@@ -60,12 +60,13 @@ export default function NewsProvider({ children }) {
 	const { loading, error, data, fetchMore } = useQuery(PAGES);
 
 	function loadMore() {
-		dispatch({ type: "loading" });
-		fetchMore({
-			variables: {
-				// TODO: add variables
-			},
-		});
+		console.log("bd is done to do moreFetch? ");
+		// dispatch({ type: "loading" });
+		// fetchMore({
+		// 	variables: {
+		// 		// TODO: add variables
+		// 	},
+		// });
 	}
 
 	function loadLocation(location) {

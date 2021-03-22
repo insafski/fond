@@ -1,20 +1,31 @@
 import React, { Fragment, useEffect } from "react";
 import { useRouter } from "next/router";
 import cx from "classnames";
+import PropTypes from "prop-types";
 
 import Dropdown from "@/components/containers/Dropdown";
 import { localesConfig } from "@/utils/localesConfig";
 import Menu from "@/components/containers/Menu";
 
-export default function NewsLocation({ handleSetLocation, location }) {
+export default function NewsLocation({ handleSetLocation, location, loadLocation }) {
 	const router = useRouter();
 
 	useEffect(() => {
 		handleSetLocation(router.locale);
 	}, []);
 
+	function handleChangeLocation(locale) {
+		// TODO: wait until bd is done
+		handleSetLocation(locale);
+		// loadLocation
+		console.log(locale);
+	}
+
 	const menu = (
-		<Menu selectable={true} className={"rounded-none shadow-none bg-white border border-solid border-gray-300 outline-none"}>
+		<Menu
+			selectable={true}
+			className={"rounded-none shadow-none bg-white border border-solid border-gray-300 outline-none"}
+		>
 			{
 				router.locales.map((item, idx) => {
 					const icon = localesConfig[item].icon;
@@ -22,8 +33,11 @@ export default function NewsLocation({ handleSetLocation, location }) {
 					const classOption = localesConfig[item].class;
 
 					return (
-						<Fragment key={idx}>
-							<div className={cx("flex items-center px-4 py-2", classOption, { "border-b border-solid border-gray-300": idx !== router.locales.length - 1 })}>
+						<Fragment key={idx} >
+							<div
+								onClick={() => handleChangeLocation(item)}
+								className={cx("flex items-center px-4 py-2", classOption, { "border-b border-solid border-gray-300": idx !== router.locales.length - 1 })}
+							>
 								<img key={item} src={icon} className={"w-8 mr-4"} />
 								<span>{country}</span>
 							</div>
@@ -55,3 +69,15 @@ export default function NewsLocation({ handleSetLocation, location }) {
 		</div>
 	);
 }
+
+NewsLocation.propTypes = {
+	handleSetLocation: PropTypes.func,
+	loadLocation: PropTypes.func,
+	location: PropTypes.string,
+};
+
+NewsLocation.defaultProp = {
+	handleSetLocation: () => Function,
+	loadLocation: () => Function,
+	location: "en",
+};
