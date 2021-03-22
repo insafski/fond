@@ -20,7 +20,7 @@ export default function NewsProvider({ children }) {
 			case "loading":
 				return {
 					...state,
-					isLoading: !state.isLoading,
+					isLoading: true,
 				};
 			case "error":
 				return {
@@ -32,6 +32,7 @@ export default function NewsProvider({ children }) {
 				return {
 					...state,
 					news: [...state.news, ...payload.pages],
+					isLoading: false,
 				};
 			case "loadLoc":
 				return {
@@ -48,7 +49,7 @@ export default function NewsProvider({ children }) {
 			case "setLocation":
 				return {
 					...state,
-					location: payload.location,
+					location: payload,
 				};
 			default:
 				return initialState;

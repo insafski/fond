@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import Sections from "./Sections";
 import Seo from "@/components/elements/SEO";
 import Section from "@/components/containers/Section";
+import { NewsProvider } from "@/components/sections/News";
 
 export default function Page({ sections, metadata, heading, mainPage, title, subTitle, preview, slug, description }) {
 	const router = useRouter();
@@ -28,13 +29,13 @@ export default function Page({ sections, metadata, heading, mainPage, title, sub
 	}
 
 	return (
-		<>
+		<NewsProvider>
 			<Seo metadata={metadata} />
 			{
 				!mainPage && (<Section heading={heading} />)
 			}
 			<Sections sections={sections} />
-		</>
+		</NewsProvider>
 	);
 }
 

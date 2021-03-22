@@ -1,17 +1,6 @@
 import { createContext, useContext } from "react";
 
-export const NewsContext = createContext({
-	mainState: {
-		isLoading: false,
-		isError: false,
-		errorMessage: "",
-		news: [],
-		location: "en",
-	},
-	loadMore: () => Function,
-	loadLocation: () => Function,
-	handleSetLocation: () => Function,
-});
+export const NewsContext = createContext();
 
 NewsContext.displayName = "NewsContext";
 

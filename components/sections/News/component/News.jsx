@@ -9,17 +9,14 @@ import NewsLocation from "./NewsLocation";
 
 export default function News() {
 	const {
+		isLoading,
+		news,
+		isError,
 		loadMore,
 		loadLocation,
+		errorMessage,
+		location,
 		handleSetLocation,
-		mainState: {
-			isLoading,
-			news,
-			isError,
-			errorMessage,
-			location,
-		},
-
 	} = useNewsContext();
 
 	const data = [
@@ -119,19 +116,17 @@ export default function News() {
 
 	if (news) {
 		return (
-			<NewsContextProvider>
-				<Section className={"flex flex-col"}>
-					<div className="container">
-						<div className="news-controllers">
-							<div className="news-headign">
-								<span> Новости </span>
-							</div>
-							<NewsLocation handleSetLocation={handleSetLocation} location={location}/>
+			<Section className={"flex flex-col"}>
+				<div className="container">
+					<div className="news-controllers">
+						<div className="news-headign">
+							<span> Новости </span>
 						</div>
-						<List items={data} type={"news"} className={"flex content-between justify-between w-full h-full flex-wrap"} />
+						<NewsLocation handleSetLocation={handleSetLocation} location={location}/>
 					</div>
-				</Section>
-			</NewsContextProvider>
+					<List items={data} type={"news"} className={"flex content-between justify-between w-full h-full flex-wrap"} />
+				</div>
+			</Section>
 		);
 	}
 }
