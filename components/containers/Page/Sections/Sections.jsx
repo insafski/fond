@@ -4,7 +4,7 @@ import get from "lodash/get";
 
 import sectionsHashMap from "@/components/sections";
 
-export default function Sections({ sections }) {
+export default function Sections({ sections, newsPage, mainPage }) {
 	return (
 		<div className={"flex flex-col"}>
 			{
@@ -22,6 +22,8 @@ export default function Sections({ sections }) {
 							key: `${component}-${idx}`,
 							heading,
 							...section,
+							newsPage,
+							mainPage,
 						},
 					);
 				})
@@ -33,11 +35,15 @@ export default function Sections({ sections }) {
 Sections.propTypes = {
 	sections: PropTypes.array,
 	manufacturers: PropTypes.array,
+	newsPage: PropTypes.bool,
+	mainPage: PropTypes.bool,
 };
 
 Sections.deafaultProps = {
 	sections: [],
 	manufacturers: [],
+	newsPage: false,
+	mainPage: false,
 };
 
 Sections.displayName = "Sections";

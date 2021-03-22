@@ -4,7 +4,7 @@ import Page from "@/components/containers/Page";
 
 const App = () => {
 	return (
-		<Page sections={[{ component: "news" }]} mainPage/>
+		<Page sections={[{ component: "news" }]} newsPage/>
 	);
 };
 
