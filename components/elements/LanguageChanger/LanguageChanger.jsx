@@ -9,9 +9,9 @@ import { localesConfig } from "@/utils/localesConfig";
 
 export default function LanguageChanger() {
 	const router = useRouter();
-
+	console.log(router);
 	const menu = (
-		<Menu selectable={true} className={"rounded-none shadow-none bg-white border border-solid border-gray-300 outline-none"}>
+		<Menu selectable={true} className={"rounded-none shadow-none bg-white border border-solid border-gray-300 outline-none p-0"}>
 			{
 				router.locales.map((item, idx) => {
 					const icon = localesConfig[item].icon;
@@ -43,7 +43,7 @@ export default function LanguageChanger() {
 				animation={"slide-up"}
 			>
 				<button className={"bg-gray-800 ring-2 ring-white flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"}>
-					<img className="h-8 w-8 rounded-full" src={localeIcon} alt=""/>
+					<img className="h-8 w-8 rounded-full" src={localeIcon} alt="" />
 				</button>
 			</Dropdown>
 		</div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-import LanguageChanger from "@components/elements/LanguageChanger";
+import LanguageChanger from "@/components/elements/LanguageChanger";
 
 export default {
 	title: "Elements/LanguageChanger",
@@ -10,8 +10,9 @@ export default {
 	},
 };
 
-const Template = args => <LanguageChanger {...args} />;
-
+const Template = args => (
+	<LanguageChanger {...args} />
+);
 export const Primary = Template.bind({});
 Primary.args = {
 	primary: true,
