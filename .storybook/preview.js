@@ -2,6 +2,7 @@ import { withNextRouter } from 'storybook-addon-next-router';
 import { addDecorator } from '@storybook/react';
 
 import "../styles/index.css";
+import "@/styles/fonts/fontello/css/hm-icons.css";
 
 addDecorator(
   withNextRouter({

@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
-import Form from 'rc-field-form';
+import Form from "rc-field-form";
 import PropTypes from "prop-types";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 const StyledInput = styled.input`
     width: 100%;
@@ -13,12 +13,11 @@ const StyledInput = styled.input`
 export const StyledLabel = styled.label`
 `;
 
-
-export default function Input({ id, label, error, rules, value, ...props}) {
+export default function Input({ id, label, error, rules, value, ...props }) {
 	const { Field } = Form;
 
 	const Error = ({ children }) => (
-		<ul style={{ color: 'red' }}>
+		<ul style={{ color: "red" }}>
 			{children.map(error => (
 				<li>{error}</li>
 			))}
@@ -41,15 +40,15 @@ Input.propTypes = {
 	label: PropTypes.string,
 	rules: PropTypes.array,
 	value: PropTypes.string,
-	error: PropTypes.array
-}
+	error: PropTypes.array,
+};
 
 Input.defaultProps = {
 	id: uuidv4(),
 	label: "",
 	rules: [],
 	value: "",
-	error: []
-}
+	error: [],
+};
 
 Input.displayName = "Input";

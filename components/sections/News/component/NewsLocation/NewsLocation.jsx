@@ -19,7 +19,6 @@ export default function NewsLocation({ handleSetLocation, location, loadLocation
 		// TODO: wait until bd is done
 		handleSetLocation(locale);
 		// loadLocation
-		console.log(locale);
 	}
 
 	const menu = (

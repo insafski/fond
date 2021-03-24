@@ -32,6 +32,15 @@ module.exports = {
 
     config.module.rules.push(
         {
+          test: /\.(graphql|gql)$/,
+          exclude: /node_modules/,
+          use: [
+            {
+              loader: "graphql-tag/loader",
+            },
+          ],
+        },
+        {
         test: /\.css$/,
         use: [
           {
@@ -60,5 +69,5 @@ module.exports = {
       });
 
     return config
-  },
+  }
 }

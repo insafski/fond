@@ -1,16 +1,16 @@
 import React from "react";
 
-import LanguageChanger from "@/components/elements/LanguageChanger";
+import Loader from "@/components/elements/Loader";
 
 export default {
-	title: "Elements/LanguageChanger",
-	component: LanguageChanger,
+	title: "Elements/Loader",
+	component: Loader,
 	argTypes: {
 		backgroundColor: { control: "color" },
 	},
 };
 
 const Template = args => (
-	<LanguageChanger {...args} />
+	<Loader {...args} />
 );
 export const Example = Template.bind({});
