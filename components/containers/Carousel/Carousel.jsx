@@ -2,7 +2,7 @@ import React, { createElement } from "react";
 import PropTypes from "prop-types";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import ListItem from "@/ccomponents/elements/ListElement";
+import ListItem from "@/components/elements/ListElement";
 
 export default function Carousel({ items, type }) {
 	return (

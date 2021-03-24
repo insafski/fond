@@ -1,5 +1,6 @@
 import React from "react";
 import { ApolloClient, ApolloProvider, InMemoryCache, HttpLink } from "@apollo/client";
+import PropTypes from "prop-types";
 
 export const client = new ApolloClient({
 	link: new HttpLink({
@@ -11,10 +12,18 @@ export const client = new ApolloClient({
 	cache: new InMemoryCache(),
 });
 
-export default function ApolloWrapper(children) {
+export default function ApolloWrapper({ children }) {
 	return (
 		<ApolloProvider client={client}>
 			{children}
 		</ApolloProvider>
 	);
 }
+
+ApolloWrapper.propTypes = {
+	children: PropTypes.node,
+};
+
+ApolloWrapper.propTypes = {
+	children: <></>,
+};

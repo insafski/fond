@@ -45,6 +45,7 @@ export default function NewsProvider({ children }) {
 					...state,
 					news: payload.pages,
 					locNews: false,
+					loading: false,
 				};
 			case "setLocation":
 				return {
