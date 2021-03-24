@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text renders correctly 1`] = `
+<section
+  className="block section py-12 md:py-14 lg:py-16 text"
+  style={Object {}}
+>
+  <div
+    className="container mx-auto relative px-4"
+  >
+    <div
+      className="heading heading__underline"
+    />
+  </div>
+</section>
+`;

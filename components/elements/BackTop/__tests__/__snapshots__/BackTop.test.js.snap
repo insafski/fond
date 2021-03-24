@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BackTop renders correctly 1`] = `
+<button
+  className="backtop hide"
+  onClick={[Function]}
+>
+  <i
+    className="hm-forward"
+  />
+</button>
+`;

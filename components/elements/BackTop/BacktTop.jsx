@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { animateScroll as scroll } from "react-scroll";
-import { useEffect } from "react";
 import { useToggle } from "ahooks";
 import cx from "classnames";
 
@@ -15,6 +14,7 @@ export default function BackTop() {
 
 	useEffect(() => {
 		window.addEventListener("scroll", handleScroll);
+		// TODO: Need to use useScroll
 
 		return () => window.removeEventListener("scroll", handleScroll);
 	});
