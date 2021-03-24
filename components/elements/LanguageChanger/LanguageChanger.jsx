@@ -9,7 +9,6 @@ import { localesConfig } from "@/utils/localesConfig";
 
 export default function LanguageChanger() {
 	const router = useRouter();
-	console.log(router);
 	const menu = (
 		<Menu selectable={true} className={"rounded-none shadow-none bg-white border border-solid border-gray-300 outline-none p-0"}>
 			{
