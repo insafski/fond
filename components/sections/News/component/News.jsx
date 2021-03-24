@@ -121,7 +121,7 @@ export default function News({ mainPage, newsPage }) {
 			<Section className={"flex flex-col"}>
 				<div className="container">
 					<div className="news-controllers flex justify-end mb-8">
-						<div className="news-headign flex-1 flex items-center pl-8 text-4xl font-bold">
+						<div className="news-heading flex-1 flex items-center pl-8 text-4xl font-bold">
 							<span> Новости </span>
 						</div>
 						{
