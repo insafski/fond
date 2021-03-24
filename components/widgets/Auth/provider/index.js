@@ -78,7 +78,7 @@ export default function AuthProvider({ children }) {
 					inputs: [
 						{
 							id: "email",
-							label: "Введите свой имеил",
+							label: "Введите свой email",
 							rules: [{ required: true }, { type: "email" }],
 							error(form) {
 								return form.getFieldError("email");
@@ -115,7 +115,7 @@ export default function AuthProvider({ children }) {
 									validator(rule, value, callback) {
 										const { password } = context.getFieldsValue(true);
 										if (password !== value) {
-											callback("Not Same as password1!!!");
+											callback("Пароли не совпадают!!!");
 										}
 										callback();
 									},
@@ -134,7 +134,7 @@ export default function AuthProvider({ children }) {
 					inputs: [
 						{
 							id: "email",
-							label: "Введите свой имеил",
+							label: "Введите свой email",
 							rules: [{ required: true }, { type: "email" }],
 							error(form) {
 								return form.getFieldError("email");
