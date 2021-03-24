@@ -1,34 +1,28 @@
 import React from "react";
-import styled from "styled-components";
 import Form from "rc-field-form";
 import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
+import cx from "classnames";
 
-const StyledInput = styled.input`
-    width: 100%;
-    height: 3rem;
-    border: black solid 1px;
-`;
-
-export const StyledLabel = styled.label`
-`;
-
-export default function Input({ id, label, error, rules, value, ...props }) {
+export default function Input({ id, label, error, rules, value, last, ...props }) {
 	const { Field } = Form;
 
-	const Error = ({ children }) => (
-		<ul style={{ color: "red" }}>
-			{children.map(error => (
-				<li>{error}</li>
-			))}
-		</ul>
-	);
-
 	return (
-		<div key={id}>
-			<StyledLabel key={`label=${id}`} htmlFor={id}>{label}</StyledLabel>
+		<div className={cx({ "mb-5": !last })} key={id}>
+			<label
+				htmlFor={id}
+				className={"pb-2 block"}
+				key={`label=${id}`}
+			>
+				{label}
+			</label>
 			<Field name={id} rules={rules}>
-				<StyledInput key={`input-${id}`} id={id} value={value} {...props} />
+				<input
+					id={id}
+					value={value} {...props}
+					key={`input-${id}`}
+					className={"w-full h-12 border border-black p-2"}
+				/>
 			</Field>
 			<Error>{error}</Error>
 		</div>
@@ -41,6 +35,7 @@ Input.propTypes = {
 	rules: PropTypes.array,
 	value: PropTypes.string,
 	error: PropTypes.array,
+	last: PropTypes.bool,
 };
 
 Input.defaultProps = {
@@ -49,6 +44,21 @@ Input.defaultProps = {
 	rules: [],
 	value: "",
 	error: [],
+	last: false,
 };
 
 Input.displayName = "Input";
+
+function Error({ children }) {
+	return (
+		<ul style={{ color: "red" }}>
+			{children.map((error, idx) => (
+				<li key={idx}>{error}</li>
+			))}
+		</ul>
+	);
+}
+
+Error.propTypes = {
+	children: PropTypes.any,
+};
