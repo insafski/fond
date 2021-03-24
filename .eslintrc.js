@@ -1,5 +1,5 @@
 module.exports = {
-	settings: {
+	"settings": {
 		ecmascript: 6,
 		react: {
 			version: "detect",
@@ -8,20 +8,20 @@ module.exports = {
 			onlyFilesWithFlowAnnotation: false,
 		},
 	},
-	env: {
+	"env": {
 		browser: true,
 		es6: true,
 		node: true,
 		jest: true,
 		es2021: true,
 	},
-	extends: ["eslint:recommended", "plugin:react/recommended", "prettier"],
-	globals: {
+	"extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
+	"globals": {
 		__: false,
 		__DEV__: false,
 	},
-	parser: "babel-eslint",
-	parserOptions: {
+	"parser": "babel-eslint",
+	"parserOptions": {
 		allowImportExportEverywhere: true,
 		ecmaVersion: 2018,
 		sourceType: "module",
@@ -29,7 +29,7 @@ module.exports = {
 			jsx: true,
 		},
 	},
-	rules: {
+	"rules": {
 		"no-compare-neg-zero": "error",
 		"no-cond-assign": ["error", "always"],
 		"no-console": "off",
@@ -70,9 +70,9 @@ module.exports = {
 		"array-callback-return": "error",
 		"block-scoped-var": "error",
 		"class-methods-use-this": ["error", { exceptMethods: ["render"] }],
-		complexity: "off",
+		"complexity": "off",
 		"consistent-return": "error",
-		curly: ["error", "all"],
+		"curly": ["error", "all"],
 		"default-case": "error",
 		"dot-location": ["error", "property"],
 		"dot-notation": [
@@ -81,11 +81,11 @@ module.exports = {
 				allowKeywords: true,
 			},
 		],
-		eqeqeq: [
+		"eqeqeq": [
 			"error",
 			"always",
 			{
-				null: "ignore",
+				"null": "ignore",
 			},
 		],
 		"guard-for-in": "error",
@@ -146,7 +146,7 @@ module.exports = {
 		"no-warning-comments": "off",
 		"no-with": "error",
 		"prefer-promise-reject-errors": "off",
-		radix: "error",
+		"radix": "error",
 		"require-await": "off",
 		"vars-on-top": "error",
 		"wrap-iife": [
@@ -156,8 +156,8 @@ module.exports = {
 				functionPrototypeMethods: false,
 			},
 		],
-		yoda: "error",
-		strict: ["error", "never"],
+		"yoda": "error",
+		"strict": ["error", "never"],
 		"init-declarations": "off",
 		"no-catch-shadow": "off",
 		"no-delete-var": "error",
@@ -196,7 +196,7 @@ module.exports = {
 				allowSingleLine: false,
 			},
 		],
-		camelcase: 0, // FIXME:
+		"camelcase": 0, // FIXME:
 		"capitalized-comments": "off",
 		"comma-dangle": ["error", "always-multiline"],
 		"comma-spacing": [
@@ -217,7 +217,7 @@ module.exports = {
 		"id-blacklist": "off",
 		"id-length": "off",
 		"id-match": "off",
-		indent: [
+		"indent": [
 			"error",
 			"tab",
 			{
@@ -330,7 +330,7 @@ module.exports = {
 				numbers: true,
 			},
 		],
-		quotes: [
+		"quotes": [
 			"error",
 			"double",
 			{
@@ -338,7 +338,7 @@ module.exports = {
 			},
 		],
 		"require-jsdoc": "off",
-		semi: ["error", "always"],
+		"semi": ["error", "always"],
 		"semi-spacing": [
 			"error",
 			{
@@ -450,5 +450,5 @@ module.exports = {
 		"react/jsx-uses-vars": "error",
 		"react/require-render-return": 1,
 	},
-	plugins: ["prettier"],
+	"plugins": ["prettier"],
 };
