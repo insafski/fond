@@ -1,15 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Item } from "react-photoswipe-gallery";
+import cx from "classnames";
 
-export default function GalleryItem({ original, thumbnail, width, height, title, id }) {
+export default function GalleryItem({ original, thumbnail, width, height, title, id, className }) {
 	return (
-		<div className={"photo w-1/4 p-2"}>
+		<div className={cx("photo p-2", className ? className : "w-1/4")}>
 			<Item
-				original="https://placekitten.com/1024/768?image=1"
-				thumbnail="https://placekitten.com/80/60?image=1"
-				width="1024"
-				height="768"
+				original={original}
+				thumbnail={thumbnail}
+				width={width}
+				height={height}
+				id={id}
 			>
 				{
 					({ ref, open }) => {
@@ -18,7 +20,7 @@ export default function GalleryItem({ original, thumbnail, width, height, title,
 								className={"w-full"}
 								ref={ref}
 								onClick={open}
-								src="https://placekitten.com/80/60?image=1"
+								src={thumbnail}
 								alt={title}
 								title={title}
 							/>
@@ -37,6 +39,7 @@ GalleryItem.propTypes = {
 	height: PropTypes.number,
 	title: PropTypes.string,
 	id: PropTypes.string,
+	className: PropTypes.string,
 };
 
 GalleryItem.defaultProps = {
@@ -46,6 +49,7 @@ GalleryItem.defaultProps = {
 	height: 0,
 	title: "",
 	id: "",
+	className: "",
 };
 
 GalleryItem.displayName = "GalleryItem";
