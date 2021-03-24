@@ -5,7 +5,7 @@ import cx from "classnames";
 
 export default function GalleryItem({ original, thumbnail, width, height, title, id, className }) {
 	return (
-		<div className={cx("photo p-2", className ? className : "w-1/4")}>
+		<div className={cx("photo p-2", className)}>
 			<Item
 				original={original}
 				thumbnail={thumbnail}
@@ -49,7 +49,7 @@ GalleryItem.defaultProps = {
 	height: 0,
 	title: "",
 	id: "",
-	className: "",
+	className: "w-1/4",
 };
 
 GalleryItem.displayName = "GalleryItem";
