@@ -1,12 +1,24 @@
 query PAGES {
-  pages {
-    data
-    slug
-  }
+	pages {
+		data
+		slug
+	}
 }
 
 query PAGE($slug: String!) {
-  pages(where: {slug: {_eq: $slug}}) {
-    data
-  }
+	pages(where: {slug: {_eq: $slug}}) {
+		data
+	}
+}
+
+query NEWS {
+	news: v_news {
+		id
+		slug
+		heading
+		picture
+		originla_lang
+		sections
+		settings
+	}
 }

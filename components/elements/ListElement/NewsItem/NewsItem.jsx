@@ -1,14 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import get from "lodash/get";
+import { Picture } from "@/components/elements/Picture";
 
 export default function NewsItem({ heading: { title, description }, categories, country, date, picture }) {
-	const src = get(picture, "[0].src", "");
-
 	return (
 		<div className="news-item flex-col w-full md:w-2/6 px-4">
 			<div className="news-item__picture h-2/4">
-				<img src={src} alt={title} className={"h-full object-none"}/>
+				<Picture items={picture} />
 			</div>
 			<div className="news-item__body h-2/4">
 				<div className="body-top flex justify-between my-4">
