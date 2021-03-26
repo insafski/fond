@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 
 import Logo from "@/components/elements/Logo";
@@ -19,7 +20,7 @@ export default function Footer() {
 						<SocialNetworks className={"text-yellow-600 text-4xl"} />
 					</div>
 				</div>
-				<div className={"footer__bottom text-center text-gray-50"}>
+				<div className={"footer__bottom text-center mt-5 pt-5 sm:mt-0 sm:pt-0 text-gray-50"}>
 					<span>
 						© "Фонд поддержки христианскрй культуры и наследия", 2021
 					</span>

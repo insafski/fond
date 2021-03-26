@@ -6,7 +6,7 @@ exports[`BackTop renders correctly 1`] = `
   onClick={[Function]}
 >
   <i
-    className="hm-forward"
+    className="fscch-up-open"
   />
 </button>
 `;

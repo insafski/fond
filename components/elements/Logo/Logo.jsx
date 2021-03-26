@@ -17,7 +17,7 @@ export default function Logo({ type, className, classNameLogo }) {
 
 	return (
 		<Link href={"/news"}>
-			<div className={cx("flex flex-row items-center", className)}>
+			<div className={cx("flex flex-row items-center justify-center sm:justify-start", className)}>
 				{logos.get(type)}
 				<span>
 					ФОНД ПОДДЕРЖКИ

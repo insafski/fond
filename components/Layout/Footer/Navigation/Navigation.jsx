@@ -1,8 +1,6 @@
 import React from "react";
 import Link from "@/components/elements/Link";
 
-import styles from "./Navigation.module.scss";
-
 export default function Navigation() {
 	const navigationButtons = [
 		{
@@ -26,10 +24,12 @@ export default function Navigation() {
 	return (
 		<div className="Navigation mt-8 md:mt-0 w-full md:px-28 text-center">
 			<div className="Navigation__item w-full">
-				<label htmlFor={"form_footer"} className={styles.label}>Подпишитесь на нашу новостную рассылку</label>
+				<label htmlFor={"form_footer"} className={"block mb-3 text-white"}>
+					Подпишитесь на нашу новостную рассылку
+				</label>
 				<div className="relative text-gray-600">
-					<input type="search" name="serch" placeholder="Search" className="w-full bg-white h-10 px-5 pr-10 text-sm focus:outline-none rounded-md"/>
-					<button type="submit" className="absolute right-0 top-0 h-full px-4 bg-red-500 rounded-r-md">
+					<input type="search" name="serch" placeholder="Search" className="w-full bg-white border border-white h-10 px-5 pr-10 text-sm focus:outline-none rounded-md"/>
+					<button type="submit" className="absolute text-white right-0 top-0 h-full px-4 bg-red-500 hover:bg-red-700 rounded-r-md">
 						Подпишитесь
 					</button>
 				</div>
