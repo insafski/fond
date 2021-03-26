@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Picture } from "@/components/elements/Picture";
+import Picture from "@/components/elements/Picture";
 
 export default function NewsItem({ heading: { title, description }, categories, country, date, picture }) {
 	return (

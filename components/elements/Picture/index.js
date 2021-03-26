@@ -4,7 +4,7 @@ import { isArray } from "lodash";
 
 import breakpoints from "../../../configs/breackpoints";
 
-export function Picture({ items }) {
+export default function Picture({ items }) {
 	function makeSource(breakpoint, src, alt, title) {
 		switch (breakpoint) {
 			case "main":
@@ -30,3 +30,5 @@ Picture.propTypes = {
 Picture.defaultProps = {
 	items: [],
 };
+
+Picture.displayName = "Picture";
