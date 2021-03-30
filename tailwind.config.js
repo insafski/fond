@@ -65,6 +65,15 @@ module.exports = {
 			sans: ["Montserrat", "sans-serif"],
 			serif: ["Montserrat", "sans-serif"],
 		},
+		colors: {
+			"transparent": "transparent",
+			"black": "rgba(0, 0, 0, 1)",
+			"white": "rgba(255, 255, 255, 1)",
+			"gray": "rgba(128, 128, 128, 1)",
+			"gold": "rgba(212, 153, 103, 1)",
+			"dark-blue": "rgba(32, 39, 74, 1)",
+			"blue": "rgba(69, 137, 187, 1)",
+		},
 	},
 	plugins: [
 		require("@tailwindcss/typography"),
