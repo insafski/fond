@@ -9,21 +9,23 @@ import Subscribe from "./Subscribe";
 
 export default function Footer() {
 	return (
-		<footer className={"footer px-2 md:px-0 py-3 md:py-12"} style={{ backgroundColor: "rgba(32, 39, 74, 1)" }}>
-			<div className="container">
-				<div className="footer__body flex flex-col md:flex-row">
-					<div className={"md:w-6/12 mb-3.5"}>
-						<Subscribe />
+		<footer className={"footer bg-dark-blue px-2 py-3"}>
+			<div className={"container"}>
+				<div className={"footer__body md:px-11.5 lg:px-0 lg:flex"}>
+					<div className={"flex flex-col lg:flex-1 lg:order-2"}>
+						<div className={"mb-3.5"}>
+							<Subscribe />
+						</div>
+						<div className={"mb-3.5"}>
+							<Navigation />
+						</div>
 					</div>
-					<div className={"md:w-6/12 mb-3.5"}>
-						<Navigation />
+					<div className={"footer__item mb-2 lg:flex-1 lg:order-3"}>
+						<Social className={"text-gold text-4xl"} />
 					</div>
-				</div>
-				<div className="footer__item md:w-3/12 mb-2">
-					<Social className={"text-gold text-4xl"} />
-				</div>
-				<div className="footer__item md:w-3/12 mb-3">
-					<LogoFilled className={"h-5"} />
+					<div className={"footer__item mb-3 flex justify-center lg:flex-1 lg:order-1"}>
+						<LogoFilled className={"h-5.5 md:h-6.5"} />
+					</div>
 				</div>
 				<div className={"footer__bottom text-center"}>
 					<span

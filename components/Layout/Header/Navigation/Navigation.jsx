@@ -7,7 +7,7 @@ import { LogoColored } from "@/components/elements/Logo";
 export default function Navigation({ items }) {
 	return (
 		<div className={"navigation flex justify-between"}>
-			<LogoColored className={"h-5"}/>
+			<LogoColored className={"h-5 md:h-6.5"}/>
 			<nav className={"navigation__container hidden sm:block sm:ml-6"}>
 				<ul className={"navigation__list flex space-x-4"}>
 					{

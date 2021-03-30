@@ -10,8 +10,8 @@ export default function NavigationBar() {
 		<div className={"navigation-bar relative flex items-center justify-between"}>
 			<Navigation />
 			<div className={"navigation__globals flex items-center"}>
-				<Search />
-				<Auth />
+				{/* <Search />
+				<Auth /> */}
 				{/* <LanguageChanger /> */}
 			</div>
 		</div>
