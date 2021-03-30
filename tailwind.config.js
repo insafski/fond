@@ -60,6 +60,10 @@ module.exports = {
 			80: "20rem",
 			96: "24rem",
 		},
+		fontFamily: {
+			sans: ["Montserrat", "sans-serif"],
+			serif: ["Montserrat", "sans-serif"],
+		},
 	},
 	plugins: [
 		require("@tailwindcss/typography"),

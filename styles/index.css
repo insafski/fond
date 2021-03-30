@@ -1,12 +1,18 @@
 @tailwind base;
+
 @tailwind components;
+
 @tailwind utilities;
 
 @import url("./fonts/fontello/css/hm-icons.css");
+
+@import url("./fonts/Montserrat/css/Montserrat.css");
+
 @import url("./test/style.scss");
 
 html {
     font-size: 13px;
+
     @apply text-gray-900;
 }
 
@@ -28,6 +34,7 @@ html {
 
 .rich-text-banner {
     @apply whitespace-pre-line;
+
     a {
         @apply underline;
     }
