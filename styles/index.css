@@ -13,7 +13,6 @@
 html {
     font-size: 13px;
 
-    @apply text-gray-900;
 }
 
 @media screen and (min-width: 640px) {
@@ -25,28 +24,6 @@ html {
 @media screen and (min-width: 768px) {
     html {
         font-size: 15px;
-    }
-}
-
-.rich-text-hero a {
-    @apply text-blue-600 underline;
-}
-
-.rich-text-banner {
-    @apply whitespace-pre-line;
-
-    a {
-        @apply underline;
-    }
-}
-
-.title {
-    @apply text-4xl leading-snug font-semibold;
-}
-
-@media (min-width: 768px) {
-    .title {
-        @apply text-5xl;
     }
 }
 
