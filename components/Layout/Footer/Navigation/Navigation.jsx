@@ -1,4 +1,5 @@
 import React from "react";
+
 import Link from "@/components/elements/Link";
 
 export default function Navigation() {
@@ -17,7 +18,7 @@ export default function Navigation() {
 		},
 		{
 			title: "Контакты",
-			href: "contacts",
+			href: "/contacts",
 		},
 	];
 
@@ -25,11 +26,17 @@ export default function Navigation() {
 		<div className={"navigation text-white"}>
 			<ul className={"flex flex-row justify-between"}>
 				{
-					navigationButtons.map(({ title, href }) => <li key={title} className={"text-xl"}>
-						<Link href={href}>
-							{title}
-						</Link>
-					</li>)
+					navigationButtons.map(({ title, href }) => {
+						return (
+							<li key={title} className={"text-xl"}>
+								<Link href={href}>
+									<a>
+										{title}
+									</a>
+								</Link>
+							</li>
+						);
+					})
 				}
 			</ul>
 		</div>
