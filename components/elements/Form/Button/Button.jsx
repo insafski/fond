@@ -2,16 +2,26 @@ import React from "react";
 import cx from "classnames";
 import PropTypes from "prop-types";
 
-export function Button(props) {
+export function Button({ children, className, text }) {
 	return (
-		<button className={cx("w-40 h-12 border border-black border-solid", { "bg-gray-200": props.disabled })} {...props}>
-			{props.children}
+		<button className={cx("bg-gold px-2 py-1", className)}>
+			{text}
+			{children}
 		</button>
 	);
 }
 
 Button.propTypes = {
 	disabled: PropTypes.bool,
+	className: PropTypes.string,
+	text: PropTypes.string,
 	children: PropTypes.node,
+};
+
+Button.defaultProps = {
+	disabled: false,
+	className: "",
+	text: "",
+	children: null,
 };
 

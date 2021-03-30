@@ -26,8 +26,8 @@ export default function BreadcrumbsBar() {
 	}, [router]);
 
 	return breadcrumbs.length && get(breadcrumbs, "[0].href", "") !== "/" && (
-		<div className="breaadcrumb-bar">
-			<div className="container py-4">
+		<div className={"breaadcrumbs-bar"}>
+			<div className={"container"}>
 				<Breadcrumbs breadcrumbs={breadcrumbs} />
 			</div>
 		</div>)

@@ -4,17 +4,18 @@ import PropTypes from "prop-types";
 import Section from "@/components/containers/Section";
 import Notification from "@/components/widgets/Notification";
 import List from "@/components/containers/List";
+import { Button } from "@/components/elements/Form";
+
 import { useNews } from "../context";
+
 import NewsLocation from "./NewsLocation";
 import AllNews from "./AllNews";
-import LoadMore from "./LoadMore";
 
-export default function News({ items, mainPage, newsPage }) {
+export default function News({ items, mainPage, more }) {
 	const {
 		isLoading,
 		news,
 		isError,
-		loadMore,
 		loadLocation,
 		errorMessage,
 		location,
@@ -52,9 +53,9 @@ export default function News({ items, mainPage, newsPage }) {
 						className={"flex content-between justify-between w-full h-full flex-wrap"}
 					/>
 					{
-						newsPage && (
+						more && (
 							<div className={"flex place-content-center"}>
-								<LoadMore loadMore={loadMore} />
+								<Button text={"Показать ещё"} />
 							</div>)
 					}
 				</div>
@@ -63,16 +64,16 @@ export default function News({ items, mainPage, newsPage }) {
 	}
 }
 
-News.displayName = "News";
-
 News.propTypes = {
 	items: PropTypes.array,
-	newsPage: PropTypes.bool,
+	more: PropTypes.bool,
 	mainPage: PropTypes.bool,
 };
 
 News.defaultProps = {
 	items: [],
-	newsPage: false,
+	more: false,
 	mainPage: false,
 };
+
+News.displayName = "NewsSection";

@@ -15,7 +15,7 @@ export default function Breadcrumbs({ breadcrumbs }) {
 	}
 
 	return !!breadcrumbs && (
-		<nav aria-label={"breadcrumbs"} className={"breadcrumbs"}>
+		<nav aria-label={"breadcrumbs px-1"} className={"breadcrumbs"}>
 			<ul className={"breadcrumbs__list flex"}>
 				<li className={"breadcrumbs__item"}>
 					<Link href={"/"}>

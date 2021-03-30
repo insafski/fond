@@ -12,7 +12,7 @@ export default function NewsProvider({ children }) {
 		errorMessage: "",
 		news: [],
 		locNews: false,
-		location: "en",
+		location: "ru",
 	};
 
 	function reducer(state, { type, payload }) {
