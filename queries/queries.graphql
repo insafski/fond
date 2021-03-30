@@ -21,6 +21,11 @@ query ALL_NEWS {
 		country {
 			name
 		}
+
+		category {
+			slug
+			heading
+		}
 	}
 }
 
@@ -43,6 +48,11 @@ query NEWS_ITEM($slug: String!) {
 
 		country {
 			name
+		}
+
+		category {
+			slug
+			heading
 		}
 	}
 }
