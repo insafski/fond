@@ -1,12 +1,12 @@
 query PAGES {
-	pages {
+	pages: v_text_pages {
 		sections
 		slug
 	}
 }
 
 query PAGE($slug: String!) {
-	pages(where: {slug: {_eq: $slug}}) {
+	page: v_text_pages(where: {slug: {_eq: $slug}}) {
 		sections
 	}
 }
@@ -17,6 +17,10 @@ query ALL_NEWS {
 		heading
 		picture
 		published_at
+
+		country {
+			name
+		}
 	}
 }
 
@@ -36,5 +40,9 @@ query NEWS_ITEM($slug: String!) {
 		settings
 		seo
 		sections
+
+		country {
+			name
+		}
 	}
 }

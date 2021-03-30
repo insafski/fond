@@ -42,7 +42,7 @@ export async function getStaticProps({ params: { slug }, locale }) {
 		},
 	});
 
-	const page = get(response, "data.pages[0].sections", null);
+	const page = get(response, "data.page[0].sections", null);
 
 	if (!page) {
 		console.error("Error while fetching");

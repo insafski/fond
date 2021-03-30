@@ -9,8 +9,6 @@ export default function NewsItem({ heading, slug, categories, country, date, pic
 	const title = get(heading, "title", "");
 	const description = get(heading, "description", "");
 
-	console.log(slug);
-
 	return (
 		<Link href={`/news/${slug}`}>
 			<div className={"news-item flex-col w-full md:w-2/6 hover:bg-green-100 cursor-pointer"}>
