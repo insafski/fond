@@ -22,18 +22,16 @@ export default function Navigation() {
 	];
 
 	return (
-		<div className="Navigation mt-8 md:mt-0 w-full md:px-28 text-center">
-			<div className="Navigation__item py-12 text-gray-50">
-				<ul className={"flex flex-row justify-between px-4"}>
-					{
-						navigationButtons.map(({ title, href }) => <li key={title} className={"text-xl"}>
-							<Link href={href}>
-								{title}
-							</Link>
-						</li>)
-					}
-				</ul>
-			</div>
+		<div className={"navigation text-white"}>
+			<ul className={"flex flex-row justify-between"}>
+				{
+					navigationButtons.map(({ title, href }) => <li key={title} className={"text-xl"}>
+						<Link href={href}>
+							{title}
+						</Link>
+					</li>)
+				}
+			</ul>
 		</div>
 	);
 }
