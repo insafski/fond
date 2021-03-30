@@ -7,6 +7,7 @@ query PAGES {
 
 query PAGE($slug: String!) {
 	page: v_text_pages(where: {slug: {_eq: $slug}}) {
+		heading
 		sections
 	}
 }

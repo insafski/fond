@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
 import cx from "classnames";
@@ -20,13 +20,14 @@ export default function Breadcrumbs({ breadcrumbs }) {
 						<a className={cx("text-gray")}>Главная</a>
 					</Link>
 				</li>
-				<span className={"px-1 text-gray"}>
-					{">"}
-				</span>
+
 				{
 					breadcrumbs.map(({ href, breadcrumb }, idx) => {
 						return (
 							<li key={`${href}-${idx}`} className={"breadcrumbs__item"}>
+								<span className={"px-1 text-gray"}>
+									{">"}
+								</span>
 								<Link href={href}>
 									<a className={cx("text-blue")}>
 										{convertBreadcrumb(breadcrumb)}

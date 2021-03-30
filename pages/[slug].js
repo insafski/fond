@@ -6,7 +6,7 @@ import Page from "@/components/containers/Page";
 import { PAGES, PAGE } from "@/queries/queries.graphql";
 import { client } from "@/utils/apollo";
 
-export default function Main(props) {
+export default function Pages(props) {
 	return <Page {...props} />;
 }
 
@@ -42,7 +42,7 @@ export async function getStaticProps({ params: { slug }, locale }) {
 		},
 	});
 
-	const page = get(response, "data.page[0].sections", null);
+	const page = get(response, "data.page[0]", null);
 
 	if (!page) {
 		console.error("Error while fetching");
