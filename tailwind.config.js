@@ -13,10 +13,7 @@ module.exports = {
 			},
 			container: {
 				center: true,
-				padding: {
-					"default": "1rem",
-					"md": "2rem",
-				},
+				padding: "10px",
 			},
 		},
 		screens: {
@@ -75,11 +72,12 @@ module.exports = {
 			"blue": "rgba(69, 137, 187, 1)",
 		},
 		fontSize: {
-			sm: ["10px", "12px"],
-			base: ["12px", "15px"],
-			md: ["20px", "28px"],
-			lg: ["24px", "32px"],
-			h3: ["18px", "22px"],
+			"sm": ["10px", "12px"],
+			"base": ["12px", "15px"],
+			"md": ["20px", "28px"],
+			"lg": ["24px", "32px"],
+			"h3": ["18px", "22px"],
+			"h3-md": ["24x", "24px"],
 		},
 	},
 	plugins: [

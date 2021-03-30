@@ -8,11 +8,11 @@ import Picture from "@/components/elements/Picture";
 
 export default function NewsItem({ heading, slug, categories, country, published_at, picture }) {
 	const title = get(heading, "title", "");
-	const description = get(heading, "description", "");
+	const subtitle = get(heading, "subtitle", "");
 	const countryName = get(country, "name", "");
 
 	return (
-		<div className={"news-item flex-col w-full md:w-2/6 mb-3.5"}>
+		<div className={"news-item flex-col w-full md:w-2/6 mb-3.5 px-1"}>
 			<div className={"news-item__picture mb-1"}>
 				<Link href={`/news/${slug}`}>
 					<Picture items={picture} />
@@ -38,7 +38,7 @@ export default function NewsItem({ heading, slug, categories, country, published
 				title && (
 					<div className={"news-item__title mb-0.5"}>
 						<Link href={`/news/${slug}`}>
-							<h3 className={"font-semibold text-h3"}>
+							<h3 className={"font-semibold text-h3 md:text-h3-md"}>
 								{title}
 							</h3>
 						</Link>
@@ -46,10 +46,10 @@ export default function NewsItem({ heading, slug, categories, country, published
 				)
 			}
 			{
-				description && (
+				subtitle && (
 					<div className={"news-item__description mb-1"}>
 						<p className={"font-normal text-base"}>
-							{description}
+							{subtitle}
 						</p>
 					</div>
 				)
