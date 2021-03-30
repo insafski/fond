@@ -2,7 +2,7 @@ import React from "react";
 
 export default function BackIcon() {
 	return (
-		<svg id="bc579b32-bffe-4603-bee7-b6bc697927a7" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 349 349.2">
+		<svg id="bc579b32-bffe-4603-bee7-b6bc697927a7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 349 349.2">
 			<g id="aa8d4534-54b9-4425-a026-e4753210873e" data-name="top-left">
 				<path d="M130.6,90.8A95.1,95.1,0,0,0,90.4,131a20.9,20.9,0,0,1-7.7,8.2,20.7,20.7,0,0,1-10.8,3H0a14,14,0,0,0,14,14H141.2A38,38,0,0,1,156,141.5V14A14,14,0,0,0,142,0V71.9A21.8,21.8,0,0,1,139,83,21.1,21.1,0,0,1,130.6,90.8Z" fill="#eeedef"/>
 			</g>
