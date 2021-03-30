@@ -75,6 +75,7 @@ module.exports = {
 			"blue": "rgba(69, 137, 187, 1)",
 		},
 		fontSize: {
+			sm: ["10px", "12px"],
 			base: ["12px", "15px"],
 			md: ["20px", "28px"],
 			lg: ["24px", "32px"],

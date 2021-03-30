@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import get from "lodash/get";
 import Link from "next/link";
+import moment from "moment";
 
 import Picture from "@/components/elements/Picture";
 
@@ -11,13 +12,13 @@ export default function NewsItem({ heading, slug, categories, country, published
 	const countryName = get(country, "name", "");
 
 	return (
-		<div className={"news-item flex-col w-full md:w-2/6 hover:bg-green-100 cursor-pointer"}>
+		<div className={"news-item flex-col w-full md:w-2/6 mb-3.5"}>
 			<div className={"news-item__picture mb-1"}>
 				<Link href={`/news/${slug}`}>
 					<Picture items={picture} />
 				</Link>
 			</div>
-			<div className={"news-item__meta flex justify-between mb-2"}>
+			<div className={"news-item__meta uppercase text-gray font-medium text-sm flex justify-between mb-2"}>
 				{
 					countryName && (
 						<span>
@@ -28,7 +29,7 @@ export default function NewsItem({ heading, slug, categories, country, published
 				{
 					published_at && (
 						<span>
-							{published_at}
+							{moment(published_at).format("DD.MM.YYYY")}
 						</span>
 					)
 				}

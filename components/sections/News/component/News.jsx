@@ -32,8 +32,8 @@ export default function News({ items, mainPage, newsPage }) {
 	if (news) {
 		return (
 			<Section className={"flex flex-col"}>
-				<div className="container">
-					<div className="news-controllers flex justify-end mb-8">
+				<div className={"container px-2"}>
+					<div className="hidden news-controllers flex justify-end mb-8">
 						<div className="news-heading flex-1 flex items-center pl-8 text-4xl font-bold">
 							<span> Новости </span>
 						</div>
