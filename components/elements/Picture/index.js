@@ -8,7 +8,7 @@ export default function Picture({ items, className }) {
 	function makeSource(breakpoint, src, alt, title) {
 		switch (breakpoint) {
 			case "main":
-				return <img className={"h-full rounded-md object-contain"} src={src} alt={alt} title={title} />;
+				return <img src={src} alt={alt} title={title} />;
 			default:
 				return <source srcSet={src} media={`(min-width: ${breakpoints[breakpoint]})`} />;
 		}

@@ -74,6 +74,12 @@ module.exports = {
 			"dark-blue": "rgba(32, 39, 74, 1)",
 			"blue": "rgba(69, 137, 187, 1)",
 		},
+		fontSize: {
+			base: ["12px", "15px"],
+			md: ["20px", "28px"],
+			lg: ["24px", "32px"],
+			h3: ["18px", "22px"],
+		},
 	},
 	plugins: [
 		require("@tailwindcss/typography"),

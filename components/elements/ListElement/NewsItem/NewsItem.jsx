@@ -5,41 +5,60 @@ import Link from "next/link";
 
 import Picture from "@/components/elements/Picture";
 
-export default function NewsItem({ heading, slug, categories, country, date, picture }) {
+export default function NewsItem({ heading, slug, categories, country, published_at, picture }) {
 	const title = get(heading, "title", "");
 	const description = get(heading, "description", "");
+	const countryName = get(country, "name", "");
 
 	return (
-		<Link href={`/news/${slug}`}>
-			<div className={"news-item flex-col w-full md:w-2/6 hover:bg-green-100 cursor-pointer"}>
-				<div className={"news-item__picture mb-1"}>
+		<div className={"news-item flex-col w-full md:w-2/6 hover:bg-green-100 cursor-pointer"}>
+			<div className={"news-item__picture mb-1"}>
+				<Link href={`/news/${slug}`}>
 					<Picture items={picture} />
-				</div>
-				<div className={"news-item__meta flex justify-between mb-2"}>
-					<span className={"country"}>
-						{country}
-					</span>
-					<span className={"date"}>
-						{date}
-					</span>
-				</div>
-				<div className={"news-item__title mb-0.5"}>
-					<h3>
-						{title}
-					</h3>
-				</div>
-				<div className={"news-item__description mb-1"}>
-					<p>
-						{description}
-					</p>
-				</div>
-				<div className={"news-item__categories"}>
-					<span className={"font-bold border-b-4 border-yellow-900 py-2"}>
-						{categories}
-					</span>
-				</div>
+				</Link>
 			</div>
-		</Link>
+			<div className={"news-item__meta flex justify-between mb-2"}>
+				{
+					countryName && (
+						<span>
+							{countryName}
+						</span>
+					)
+				}
+				{
+					published_at && (
+						<span>
+							{published_at}
+						</span>
+					)
+				}
+			</div>
+			{
+				title && (
+					<div className={"news-item__title mb-0.5"}>
+						<Link href={`/news/${slug}`}>
+							<h3 className={"font-semibold text-h3"}>
+								{title}
+							</h3>
+						</Link>
+					</div>
+				)
+			}
+			{
+				description && (
+					<div className={"news-item__description mb-1"}>
+						<p className={"font-normal text-base"}>
+							{description}
+						</p>
+					</div>
+				)
+			}
+			<div className={"news-item__categories"}>
+				<span className={"font-bold border-b-4 border-yellow-900 py-2"}>
+					{categories}
+				</span>
+			</div>
+		</div>
 	);
 }
 
@@ -47,8 +66,8 @@ NewsItem.propTypes = {
 	heading: PropTypes.object,
 	slug: PropTypes.string,
 	categories: PropTypes.string,
-	country: PropTypes.string,
-	date: PropTypes.string,
+	country: PropTypes.object,
+	published_at: PropTypes.string,
 	picture: PropTypes.array,
 	description: PropTypes.string,
 };
@@ -57,8 +76,10 @@ NewsItem.defaultProps = {
 	heading: {},
 	slug: "",
 	categories: "",
-	country: "",
-	date: "",
+	country: {
+		name: "",
+	},
+	published_at: "",
 	picture: [],
 	description: "",
 };

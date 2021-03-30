@@ -20,10 +20,10 @@ export default function Footer() {
 					</div>
 				</div>
 				<div className="footer__item md:w-3/12 mb-2">
-					<Social className={"text-yellow-600 text-4xl"} />
+					<Social className={"text-gold text-4xl"} />
 				</div>
 				<div className="footer__item md:w-3/12 mb-3">
-					<Logo type={"footer"} className={"text-yellow-600"} />
+					<Logo type={"footer"} className={"text-gold"} />
 				</div>
 				<div className={"footer__bottom text-center"}>
 					<span
