@@ -1,13 +1,13 @@
 query PAGES {
 	pages {
-		data
+		sections
 		slug
 	}
 }
 
 query PAGE($slug: String!) {
 	pages(where: {slug: {_eq: $slug}}) {
-		data
+		sections
 	}
 }
 
