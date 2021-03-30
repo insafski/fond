@@ -8,7 +8,7 @@ import Seo from "@/components/elements/SEO";
 import Section from "@/components/containers/Section";
 import { NewsProvider } from "@/components/sections/News";
 
-export default function Page({ sections, metadata, heading, mainPage, title, subTitle, preview, slug, description, newsPage }) {
+export default function Page({ sections, metadata, heading, mainPage, title, subTitle, preview, slug, description, newsPage, detailedNews }) {
 	const router = useRouter();
 
 	// // Check if the required data was provided
@@ -32,7 +32,7 @@ export default function Page({ sections, metadata, heading, mainPage, title, sub
 		<NewsProvider>
 			<Seo metadata={metadata} />
 			{
-				!mainPage && (<Section heading={heading} />)
+				!mainPage && !detailedNews && (<Section heading={heading} />)
 			}
 			<Sections sections={sections} newsPage={newsPage} mainPage={mainPage}/>
 		</NewsProvider>
@@ -51,6 +51,7 @@ Page.propTypes = {
 	}),
 	mainPage: PropTypes.bool,
 	newsPage: PropTypes.bool,
+	detailedNews: PropTypes.bool,
 };
 
 Page.defaultProps = {
@@ -63,6 +64,7 @@ Page.defaultProps = {
 	// },
 	mainPage: false,
 	newsPage: false,
+	detailedNews: false,
 };
 
 Page.displayName = "Page";

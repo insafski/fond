@@ -21,7 +21,7 @@ export default function BackTop() {
 
 	return (
 		<button className={cx(styles.backtop, { [styles.hide]: !state })} onClick={() => scroll.scrollToTop()}>
-			<i className={"fscch-up-open"}></i>
+			<i className={"fscch-up-open-big text-3xl border-2 border-main"}></i>
 		</button>
 	);
 }
