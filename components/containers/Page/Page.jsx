@@ -1,6 +1,6 @@
 import React from "react";
-import ErrorPage from "next/error";
-import { useRouter } from "next/dist/client/router";
+// import ErrorPage from "next/error";
+// import { useRouter } from "next/dist/client/router";
 import PropTypes from "prop-types";
 
 import Sections from "./Sections";
@@ -8,8 +8,13 @@ import Seo from "@/components/elements/SEO";
 import Section from "@/components/containers/Section";
 import { NewsProvider } from "@/components/sections/News";
 
-export default function Page({ sections, metadata, heading, mainPage, title, subTitle, preview, slug, description, newsPage, detailedNews }) {
-	const router = useRouter();
+export default function Page({ sections, metadata, heading, mainPage, title, subTitle,
+	// preview,
+	// slug,
+	// description,
+	// newsPage,
+	detailedNews }) {
+	// const router = useRouter();
 
 	// // Check if the required data was provided
 	// if (!router.isFallback && !sections?.length) {
@@ -34,7 +39,7 @@ export default function Page({ sections, metadata, heading, mainPage, title, sub
 			{
 				!mainPage && !detailedNews && (<Section heading={heading} />)
 			}
-			<Sections sections={sections} newsPage={newsPage} mainPage={mainPage}/>
+			<Sections sections={sections} />
 		</NewsProvider>
 	);
 }
@@ -49,6 +54,9 @@ Page.propTypes = {
 		subTitle: PropTypes.string,
 		subText: PropTypes.string,
 	}),
+	title: PropTypes.string,
+	subTitle: PropTypes.string,
+	description: PropTypes.string,
 	mainPage: PropTypes.bool,
 	newsPage: PropTypes.bool,
 	detailedNews: PropTypes.bool,
@@ -62,6 +70,9 @@ Page.defaultProps = {
 	// heading: {
 	// 	title: "Самостоятельная страница",
 	// },
+	title: "",
+	subTitle: "",
+	description: PropTypes.string,
 	mainPage: false,
 	newsPage: false,
 	detailedNews: false,

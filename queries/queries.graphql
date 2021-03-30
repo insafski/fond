@@ -1,3 +1,5 @@
+#import "./fragments/news.graphql"
+
 query PAGES {
 	pages: v_text_pages {
 		sections
@@ -12,40 +14,33 @@ query PAGE($slug: String!) {
 	}
 }
 
-query ALL_NEWS {
-	news: v_news {
-		slug
+query MAIN_PAGE {
+	page: v_text_pages(where: {slug: {_eq: "/"}}) {
 		heading
-		picture
-		published_at
+		sections
+	}
 
-		country {
-			name
-		}
+	news: v_news(order_by: {published_at: desc}, limit: 9) {
+		...NewsFields
+	}
+}
 
-		category {
-			slug
-			heading
-		}
+query ALL_NEWS {
+	news: v_news(order_by: {published_at: desc}) {
+		...NewsFields
 	}
 }
 
 query NEWS_ITEM($slug: String!) {
 	news: v_news(where: {slug: {_eq: $slug}}) {
-		country_id
-		created_at
+		slug
 		heading
-		id
 		original_lang
 		picture
 		published_at
-		updated_at
-		type
-		sort_order
-		slug
-		settings
-		seo
 		sections
+		seo
+		settings
 
 		country {
 			name

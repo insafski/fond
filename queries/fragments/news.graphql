@@ -1,0 +1,15 @@
+fragment NewsFields on v_news {
+	slug
+	heading
+	picture
+	published_at
+
+	country {
+		name
+	}
+
+	category {
+		slug
+		heading
+	}
+}
