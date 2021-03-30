@@ -26,7 +26,7 @@ export default function BreadcrumbsBar() {
 	}, [router]);
 
 	return breadcrumbs.length && get(breadcrumbs, "[0].href", "") !== "/" && (
-		<div className={"breaadcrumbs-bar"}>
+		<div className={"breadcrumbs-bar"}>
 			<div className={"container"}>
 				<Breadcrumbs breadcrumbs={breadcrumbs} />
 			</div>
