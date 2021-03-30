@@ -6,7 +6,19 @@ export default {
 	title: "Elements/Loader",
 	component: Loader,
 	argTypes: {
-		backgroundColor: { control: "color" },
+		size: {
+			control: {
+				type: "select",
+				options: [
+					"100vh",
+					"50vh",
+					"40vh",
+					"30vh",
+					"10vh",
+					"5vh",
+				],
+			},
+		},
 	},
 };
 
