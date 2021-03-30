@@ -20,8 +20,8 @@ export default function Footer() {
 				<div className="footer__item md:w-3/12 mb-3">
 					<Logo type={"footer"} className={"text-yellow-600"} />
 				</div>
-				<div className={"footer__bottom text-center text-gray-50"}>
-					<span>
+				<div className={"footer__bottom text-center"}>
+					<span style={{ color: "rgba(255, 255, 255, 0.5)" }}>
 						© "Фонд поддержки христианскрй культуры и наследия", 2021
 					</span>
 				</div>
