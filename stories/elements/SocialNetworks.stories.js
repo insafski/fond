@@ -1,6 +1,6 @@
 import React from "react";
 
-import SocialNetworks from "@/components/elements/SocialNetworks";
+import SocialNetworks from "@/components/elements/Social";
 
 export default {
 	title: "Elements/SocialNetworks",
