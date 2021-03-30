@@ -3,6 +3,10 @@ const { colors } = require("tailwindcss/defaultTheme");
 module.exports = {
 	purge: ["./pages/**/*.{js,jsx}", "./components/**/*.{js,jsx}"],
 	theme: {
+		borderColor: theme => ({
+			...theme("colors"),
+			main: "#D49967",
+		}),
 		extend: {
 			colors: {
 				primary: colors.indigo,

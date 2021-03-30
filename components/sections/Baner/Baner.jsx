@@ -1,3 +1,5 @@
-export default function Baner() {
-	return null;
+export default function Baner({ img }) {
+	return (
+		<img/>
+	);
 }

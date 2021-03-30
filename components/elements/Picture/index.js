@@ -4,18 +4,18 @@ import { isArray } from "lodash";
 
 import breakpoints from "../../../configs/breackpoints";
 
-export default function Picture({ items }) {
+export default function Picture({ items, className }) {
 	function makeSource(breakpoint, src, alt, title) {
 		switch (breakpoint) {
 			case "main":
-				return <img className={"h-full object-none rounded-md"} src={src} alt={alt} title={title} />;
+				return <img className={"h-full rounded-md object-contain"} src={src} alt={alt} title={title} />;
 			default:
 				return <source srcSet={src} media={`(min-width: ${breakpoints[breakpoint]})`} />;
 		}
 	}
 
 	return isArray(items) && items.length && (
-		<picture>
+		<picture className={className}>
 			{
 				items.map(({ breakpoint, src, alt, title }) => makeSource(breakpoint, src, alt, title))
 			}
@@ -25,10 +25,12 @@ export default function Picture({ items }) {
 
 Picture.propTypes = {
 	items: PropTypes.array,
+	className: PropTypes.string,
 };
 
 Picture.defaultProps = {
 	items: [],
+	className: "",
 };
 
 Picture.displayName = "Picture";

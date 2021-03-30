@@ -73,3 +73,45 @@ MainPage.args = {
 	mainPage: false,
 	newsPage: true,
 };
+
+const items = [
+	{
+		alt: "Альтернативный текст",
+		src: "https://images.wallpaperscraft.ru/image/kosmonavt_koltso_neon_156673_1920x1080.jpg",
+		title: "Изображение новости",
+		breakpoint: "sm",
+	},
+	{
+		alt: "Альт текст",
+		src: "https://images.wallpaperscraft.ru/image/kosmonavt_koltso_neon_156673_1920x1080.jpg",
+		title: "Второе изображение",
+		breakpoint: "md",
+	},
+	{
+		alt: "uihiuh",
+		src: "https://images.wallpaperscraft.ru/image/kosmonavt_koltso_neon_156673_1920x1080.jpg",
+		title: "kopo",
+		breakpoint: "main",
+	},
+];
+
+export const DetailedNewsPage = Template.bind({});
+DetailedNewsPage.args = {
+	sections: [{
+		component: "detailed_news", // news
+		main_picture: items,
+		title: "test",
+		subtitle: "test",
+		description: "testing",
+		country: "test",
+		category: "test",
+		created_date: "02.00.00",
+		original_lang: "test",
+	}],
+	metadata: {},
+	preview: false,
+	slug: "",
+	mainPage: false,
+	newsPage: false,
+	detailedNews: true,
+};
