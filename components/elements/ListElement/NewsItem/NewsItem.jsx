@@ -15,7 +15,9 @@ export default function NewsItem({ heading, slug, categories, country, published
 		<div className={"news-item flex-col w-full md:w-2/6 mb-3.5 px-1"}>
 			<div className={"news-item__picture mb-1"}>
 				<Link href={`/news/${slug}`}>
-					<Picture items={picture} />
+					<a>
+						<Picture items={picture} />
+					</a>
 				</Link>
 			</div>
 			<div className={"news-item__meta uppercase text-gray font-medium text-sm flex justify-between mb-2"}>
@@ -38,9 +40,11 @@ export default function NewsItem({ heading, slug, categories, country, published
 				title && (
 					<div className={"news-item__title mb-0.5"}>
 						<Link href={`/news/${slug}`}>
-							<h3 className={"font-semibold text-h3 md:text-h3-md"}>
-								{title}
-							</h3>
+							<a>
+								<h3 className={"font-semibold text-h3 md:text-h3-md"}>
+									{title}
+								</h3>
+							</a>
 						</Link>
 					</div>
 				)
