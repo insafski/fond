@@ -11,39 +11,30 @@ query PAGE($slug: String!) {
 	}
 }
 
-query NEWS {
+query ALL_NEWS {
 	news: v_news {
-		id
 		slug
 		heading
 		picture
-		originla_lang
-		sections
-		settings
+		published_at
 	}
 }
 
-query ALL_NEWS {
-  v_news {
-    slug
-  }
-}
-
 query NEWS_ITEM($slug: String!) {
-  v_news(where: {slug: {_eq: $slug}}) {
-    country_id
-    created_at
-    heading
-    id
-    original_lang
-    picture
-    published_at
-    updated_at
-    type
-    sort_order
-    slug
-    settings
-    seo
-    sections
-  }
+	news: v_news(where: {slug: {_eq: $slug}}) {
+		country_id
+		created_at
+		heading
+		id
+		original_lang
+		picture
+		published_at
+		updated_at
+		type
+		sort_order
+		slug
+		settings
+		seo
+		sections
+	}
 }

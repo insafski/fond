@@ -1,9 +1,14 @@
+import React from "react";
 import get from "lodash/get";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import Page from "@/components/containers/Page";
 import { PAGES, PAGE } from "@/queries/queries.graphql";
 import { client } from "@/utils/apollo";
+
+export default function Main(props) {
+	return <Page {...props} />;
+}
 
 export async function getStaticPaths() {
 	const response = await client.query({
@@ -37,7 +42,7 @@ export async function getStaticProps({ params: { slug }, locale }) {
 		},
 	});
 
-	const page = get(response, "data.pages[0].data", null);
+	const page = get(response, "data.pages[0].sections", null);
 
 	if (!page) {
 		console.error("Error while fetching");
@@ -54,5 +59,3 @@ export async function getStaticProps({ params: { slug }, locale }) {
 		},
 	};
 }
-
-export default Page;

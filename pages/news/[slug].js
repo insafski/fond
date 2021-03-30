@@ -1,3 +1,4 @@
+import React from "react";
 import get from "lodash/get";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
@@ -6,12 +7,16 @@ import { ALL_NEWS, NEWS_ITEM } from "@/queries/queries.graphql";
 import { client } from "@/utils/apollo";
 import { locales } from "@/utils/localesConfig";
 
+export default function News(props) {
+	return <Page {...props} />;
+}
+
 export async function getStaticPaths() {
 	const response = await client.query({
 		query: ALL_NEWS,
 	});
 
-	const news = get(response, "data.v_news", []);
+	const news = get(response, "data.news", []);
 	const paths = news.map(({ slug }) => {
 		return locales.map(locale => {
 			return {
@@ -37,7 +42,7 @@ export async function getStaticProps({ params: { slug }, locale }) {
 		},
 	});
 
-	const news_item = get(response, "data.v_news[0]", null);
+	const news_item = get(response, "data.news[0]", null);
 
 	if (!news_item) {
 		console.error("Error while fetching");
@@ -54,5 +59,3 @@ export async function getStaticProps({ params: { slug }, locale }) {
 		},
 	};
 }
-
-export default Page;
