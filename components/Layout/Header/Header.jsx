@@ -4,7 +4,7 @@ import NavigationBar from "@/components/Layout/Bars/NavigationBar";
 
 export default function Header() {
 	return (
-		<header className={"header bg-white flex flex-row py-4"}>
+		<header className={"header flex flex-row py-2"}>
 			<div className="container">
 				<NavigationBar />
 			</div>

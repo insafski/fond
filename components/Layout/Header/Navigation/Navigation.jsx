@@ -2,14 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
-import Logo from "@/components/elements/Logo";
+import { LogoColored } from "@/components/elements/Logo";
 
 export default function Navigation({ items }) {
 	return (
 		<div className={"navigation flex justify-between"}>
-			<div className={"navigation__logo flex-shrink-0 flex items-center"}>
-				<Logo type={"header"} classNameLogo={"w-16 h-16 mx-4"} className={"text-xs"}/>
-			</div>
+			<LogoColored className={"h-5"}/>
 			<nav className={"navigation__container hidden sm:block sm:ml-6"}>
 				<ul className={"navigation__list flex space-x-4"}>
 					{

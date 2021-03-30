@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
 
-import Logo from "@/components/elements/Logo";
+import { LogoFilled } from "@/components/elements/Logo";
 import Social from "@/components/elements/Social";
 
 import Navigation from "./Navigation";
@@ -23,7 +23,7 @@ export default function Footer() {
 					<Social className={"text-gold text-4xl"} />
 				</div>
 				<div className="footer__item md:w-3/12 mb-3">
-					<Logo type={"footer"} className={"text-gold"} />
+					<LogoFilled className={"h-5"} />
 				</div>
 				<div className={"footer__bottom text-center"}>
 					<span

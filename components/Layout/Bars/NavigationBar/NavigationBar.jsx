@@ -12,7 +12,7 @@ export default function NavigationBar() {
 			<div className={"navigation__globals flex items-center"}>
 				<Search />
 				<Auth />
-				<LanguageChanger />
+				{/* <LanguageChanger /> */}
 			</div>
 		</div>
 	);
