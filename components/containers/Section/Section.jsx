@@ -8,7 +8,7 @@ import styles from "./Section.module.scss";
 
 export default function Section({ className, children, heading, style }) {
 	return (
-		<section className={cx(`${styles.block}`, "section py-12 md:py-14 lg:py-16", className)} style={style}>
+		<section className={cx(`${styles.block}`, "section py-3 md:py-5 lg:py-7", className)} style={style}>
 			<div className={"container mx-auto relative px-4"}>
 				<Heading heading={heading} />
 			</div>

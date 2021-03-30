@@ -1,31 +1,44 @@
 import React from "react";
 import PropTypes from "prop-types";
+import get from "lodash/get";
+
 import Picture from "@/components/elements/Picture";
 
-export default function NewsItem({ heading: { title, description }, categories, country, date, picture }) {
+export default function NewsItem({ heading, categories, country, date, picture }) {
+	const title = get(heading, "title", "");
+	const description = get(heading, "description", "");
+
 	return (
-		<div className="news-item flex-col w-full md:w-2/6 px-4">
-			<div className="news-item__picture h-2/4">
+		<div className={"news-item flex-col w-full md:w-2/6"}>
+			<div className={"news-item__picture mb-1"}>
 				<Picture items={picture} />
 			</div>
-			<div className="news-item__body h-2/4">
-				<div className="body-top flex justify-between my-4">
-					<span className={"country"}>{country}</span>
-					<span className={"date"}>{date}</span>
-				</div>
-				<div className="body-main">
-					<span className={"heading block my-4 font-bold text-3xl"}> {title}</span>
-					<span className={"description"}>{description}</span>
-				</div>
-				<div className="body-bottom my-4">
-					<span className={"categories font-bold border-b-4 border-yellow-900 py-2"}>{categories}</span>
-				</div>
+			<div className={"news-item__meta flex justify-between mb-2"}>
+				<span className={"country"}>
+					{country}
+				</span>
+				<span className={"date"}>
+					{date}
+				</span>
+			</div>
+			<div className={"news-item__title mb-0.5"}>
+				<h3>
+					{title}
+				</h3>
+			</div>
+			<div className={"news-item__description mb-1"}>
+				<p>
+					{description}
+				</p>
+			</div>
+			<div className={"news-item__categories"}>
+				<span className={"font-bold border-b-4 border-yellow-900 py-2"}>
+					{categories}
+				</span>
 			</div>
 		</div>
 	);
 }
-
-NewsItem.displayName = "NewsItem";
 
 NewsItem.propTypes = {
 	heading: PropTypes.object,
@@ -44,3 +57,5 @@ NewsItem.defaultProps = {
 	picture: [],
 	description: "",
 };
+
+NewsItem.displayName = "NewsItem";
