@@ -12,8 +12,8 @@ export default function Sections({ sections, newsPage, mainPage }) {
 					const component = get(section, "component", "");
 					const heading = {
 						title: get(section, "title"),
-						subTitle: get(section, "subtitle"),
-						subText: get(section, "description"),
+						subtitle: get(section, "subtitle"),
+						description: get(section, "description"),
 					};
 
 					return createElement(

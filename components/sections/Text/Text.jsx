@@ -14,7 +14,7 @@ export default function Text({ heading }) {
 Text.propTypes = {
 	heading: PropTypes.shape({
 		title: PropTypes.string,
-		subTitle: PropTypes.string,
-		subText: PropTypes.string,
+		subtitle: PropTypes.string,
+		description: PropTypes.string,
 	}),
 };

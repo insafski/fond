@@ -5,7 +5,7 @@ import Picture from "@/components/elements/Picture";
 import Heading from "@/components/elements/Heading";
 
 export default function About({ picture, heading }) {
-	const { title, subTitle, description } = heading;
+	const { title, subtitle, description } = heading;
 
 	return (
 		<div className={"container mx-auto"}>
@@ -17,8 +17,8 @@ export default function About({ picture, heading }) {
 				</div>
 				<div>
 					{
-						subTitle && (
-							<p className={"font-semibold mb-8 text-xl"}>{subTitle}</p>
+						subtitle && (
+							<p className={"font-semibold mb-8 text-xl"}>{subtitle}</p>
 						)
 					}
 					{

@@ -27,8 +27,8 @@ Example.args = {
 	slug: "",
 	heading: {
 		title: "TEST",
-		subTitle: "TEST",
-		subText: "TEST",
+		subtitle: "TEST",
+		description: "TEST",
 	},
 	mainPage: false,
 	newsPage: false,
@@ -47,8 +47,8 @@ NewsPage.args = {
 	slug: "",
 	heading: {
 		title: "TEST",
-		subTitle: "TEST",
-		subText: "TEST",
+		subtitle: "TEST",
+		description: "TEST",
 	},
 	mainPage: true,
 	newsPage: false,
@@ -67,8 +67,8 @@ MainPage.args = {
 	slug: "",
 	heading: {
 		title: "TEST",
-		subTitle: "TEST",
-		subText: "TEST",
+		subtitle: "TEST",
+		description: "TEST",
 	},
 	mainPage: false,
 	newsPage: true,

@@ -16,8 +16,8 @@ H1.args = {
 	className: "custom classNames",
 	heading: {
 		title: "Test",
-		subTitle: "test",
-		subText: "test",
+		subtitle: "test",
+		description: "test",
 	},
 	underline: bool,
 };
@@ -28,8 +28,8 @@ H2.args = {
 	className: "custom classNames",
 	heading: {
 		title: "Test2",
-		subTitle: "test2",
-		subText: "test2",
+		subtitle: "test2",
+		description: "test2",
 	},
 	underline: bool,
 };

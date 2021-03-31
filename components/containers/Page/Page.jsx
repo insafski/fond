@@ -8,7 +8,7 @@ import Seo from "@/components/elements/SEO";
 import Section from "@/components/containers/Section";
 import { NewsProvider } from "@/components/sections/News";
 
-export default function Page({ sections, metadata, heading, mainPage, title, subTitle,
+export default function Page({ sections, metadata, heading, mainPage, title, subtitle,
 	// preview,
 	// slug,
 	// description,
@@ -29,7 +29,7 @@ export default function Page({ sections, metadata, heading, mainPage, title, sub
 	if (!heading) {
 		heading = {
 			title,
-			subTitle,
+			subtitle,
 		};
 	}
 
@@ -51,11 +51,11 @@ Page.propTypes = {
 	slug: PropTypes.string,
 	heading: PropTypes.shape({
 		title: PropTypes.string,
-		subTitle: PropTypes.string,
-		subText: PropTypes.string,
+		subtitle: PropTypes.string,
+		description: PropTypes.string,
 	}),
 	title: PropTypes.string,
-	subTitle: PropTypes.string,
+	subtitle: PropTypes.string,
 	description: PropTypes.string,
 	mainPage: PropTypes.bool,
 	newsPage: PropTypes.bool,
@@ -71,7 +71,7 @@ Page.defaultProps = {
 	// 	title: "Самостоятельная страница",
 	// },
 	title: "",
-	subTitle: "",
+	subtitle: "",
 	description: PropTypes.string,
 	mainPage: false,
 	newsPage: false,
