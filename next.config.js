@@ -20,7 +20,7 @@ module.exports = {
 		},
 	}),
 	env: {
-		HASURA_ENDPOINT: "https://gql.fscch.ru/v1/graphql",
-		HASURA_ADMIN_SECRET: "pass-hasura-fssch",
+		HASURA_ENDPOINT: process.env.NEXT_PUBLIC_HASURA_ENDPOINT,
+		HASURA_ADMIN_SECRET: process.env.NEXT_PUBLIC_HASURA_SECRET,
 	},
 };
