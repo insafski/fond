@@ -23,7 +23,7 @@ export default function Main(props) {
 	});
 
 	return (
-		<Page {...props} sections={sections} />
+		<Page {...props} sections={sections} mainPage />
 	);
 }
 

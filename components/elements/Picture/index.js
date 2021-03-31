@@ -14,7 +14,7 @@ export default function Picture({ items, className }) {
 		}
 	}
 
-	return isArray(items) && items.length && (
+	return isArray(items) && !!items.length && (
 		<picture className={className}>
 			{
 				items.map(({ breakpoint, src, alt, title }) => makeSource(breakpoint, src, alt, title))
