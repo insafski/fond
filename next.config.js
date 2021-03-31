@@ -23,4 +23,5 @@ module.exports = {
 		HASURA_ENDPOINT: process.env.NEXT_PUBLIC_HASURA_ENDPOINT,
 		HASURA_ADMIN_SECRET: process.env.NEXT_PUBLIC_HASURA_SECRET,
 	},
+	distDir: "out",
 };
